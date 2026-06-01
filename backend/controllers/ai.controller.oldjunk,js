@@ -1,0 +1,2164 @@
+// // const pool = require('../db');
+
+// // // Enhanced mock analysis with deep psychological insights and Indian cultural context
+// // const generateEnhancedMockAnalysis = async (responses) => {
+// //   const emotionalTags = [];
+// //   const painPoints = [];
+// //   const strengths = [];
+// //   const recommendations = [];
+// //   const redFlags = [];
+// //   const deepInsights = [];
+// //   const culturalInsights = [];
+// //   const counselorNotes = [];
+
+// //   // Initialize scoring with realistic baselines
+// //   let communicationScore = 6.5;
+// //   let emotionalBurdenScore = 5.5;
+// //   let trustScore = 7.0;
+// //   let intimacyScore = 6.0;
+// //   let conflictResolutionScore = 6.2;
+// //   let futureAlignmentScore = 6.8;
+// //   let familyInfluenceScore = 7.0;
+// //   let culturalAdaptationScore = 6.5;
+
+// //   // Analyze responses with deep psychological and cultural understanding
+// //   responses.forEach(response => {
+// //     if (response.answer_text) {
+// //       const text = response.answer_text.toLowerCase();
+// //       const questionId = parseInt(response.question_id);
+      
+// //       // Family influence analysis (Questions 6-10)
+// //       if ([6, 7, 8, 9, 10].includes(questionId)) {
+// //         if (text.includes('family pressure') || text.includes('expectations') || text.includes('tradition')) {
+// //           familyInfluenceScore += 1.5;
+// //           culturalInsights.push('Family expectations are playing a significant role in shaping your relationship decisions - this is both a strength and a challenge in Indian relationships');
+          
+// //           if (text.includes('torn') || text.includes('conflict') || text.includes('struggle')) {
+// //             painPoints.push('Feeling caught between family expectations and personal desires - a common but painful experience for many Indian couples');
+// //             emotionalBurdenScore += 1.5;
+// //             counselorNotes.push('You\'re navigating the delicate balance between honoring family and building your own relationship - this takes tremendous emotional energy');
+// //           }
+// //         }
+        
+// //         if (text.includes('boundaries') || text.includes('independent') || text.includes('our choice')) {
+// //           strengths.push('Shows healthy boundary-setting with family while maintaining respect - a crucial skill in Indian relationships');
+// //           culturalAdaptationScore += 1.0;
+// //         }
+// //       }
+
+// //       // Gender roles analysis (Questions 26-28)
+// //       if ([26, 27, 28].includes(questionId)) {
+// //         if (text.includes('traditional') && text.includes('tension')) {
+// //           painPoints.push('Traditional gender role expectations are creating friction in your modern relationship');
+// //           culturalInsights.push('You\'re part of a generation redefining gender roles in Indian relationships - this transition is challenging but necessary');
+// //           conflictResolutionScore -= 1.0;
+// //         }
+        
+// //         if (text.includes('balance') || text.includes('equal') || text.includes('support')) {
+// //           strengths.push('Successfully navigating the evolution from traditional to egalitarian partnership');
+// //           culturalAdaptationScore += 1.5;
+// //         }
+// //       }
+
+// //       // Communication patterns with cultural context
+// //       if ([1, 2, 3, 4, 5].includes(questionId)) {
+// //         if (text.includes('misunderstood') || text.includes('not heard')) {
+// //           painPoints.push('Communication breakdown: Feeling unheard and misunderstood - often rooted in different communication styles learned in childhood');
+// //           communicationScore -= 1.5;
+// //           counselorNotes.push('Your communication style may have been shaped by family patterns where direct emotional expression wasn\'t encouraged');
+// //         }
+        
+// //         if (text.includes('fine') && questionId === 5) {
+// //           painPoints.push('The "I\'m fine" pattern - a common defense mechanism that prevents real intimacy');
+// //           deepInsights.push('Saying "I\'m fine" when you\'re not is often learned behavior from families where emotional expression was discouraged - but it\'s killing your emotional connection');
+// //           emotionalTags.push('emotional_suppression');
+// //         }
+// //       }
+
+// //       // Trust and security with cultural nuances
+// //       if ([16, 17, 18, 19, 20].includes(questionId)) {
+// //         if (text.includes('betrayed') || text.includes('lied') || text.includes('cheated')) {
+// //           trustScore -= 3.0;
+// //           emotionalBurdenScore += 2.5;
+// //           redFlags.push('Trust violations have created deep wounds that need professional attention - betrayal trauma affects your nervous system and ability to feel safe');
+// //           counselorNotes.push('Trust betrayal in Indian relationships often carries additional shame due to family and social implications - this compounds the healing process');
+// //         }
+        
+// //         if (text.includes('check phone') || text.includes('suspicious') || text.includes('monitor')) {
+// //           trustScore -= 2.0;
+// //           redFlags.push('Surveillance behaviors indicate your nervous system is in constant threat detection mode - this is exhausting and unsustainable');
+// //           deepInsights.push('When you feel the need to check their phone, you\'re trying to control your anxiety, but it actually increases it - trust is rebuilt through consistent actions, not monitoring');
+// //         }
+// //       }
+
+// //       // Emotional intimacy and vulnerability
+// //       if ([11, 12, 13, 14, 15].includes(questionId)) {
+// //         if (text.includes('lonely') || text.includes('disconnected') || text.includes('misunderstood')) {
+// //           intimacyScore -= 2.0;
+// //           emotionalTags.push('emotional_isolation');
+// //           painPoints.push('Emotional loneliness despite physical presence - you can be in the same room but worlds apart emotionally');
+// //           deepInsights.push('Emotional loneliness in a relationship hurts more than being actually alone because it comes with the added pain of "they\'re right here but don\'t see me"');
+// //         }
+        
+// //         if (text.includes('hide') || text.includes('mask') || text.includes('pretend')) {
+// //           intimacyScore -= 1.5;
+// //           painPoints.push('Hiding parts of yourself to maintain the relationship - but authentic love requires being known fully');
+// //           counselorNotes.push('You\'re protecting yourself by hiding, but you\'re also preventing the deep connection you crave - it\'s a painful paradox');
+// //         }
+        
+// //         if (text.includes('fear') && (text.includes('leaving') || text.includes('abandonment'))) {
+// //           emotionalTags.push('anxious_attachment');
+// //           emotionalBurdenScore += 2.0;
+// //           deepInsights.push('Your fear of abandonment may be driving behaviors that actually push your partner away - anxiety makes us do the opposite of what we need');
+// //           counselorNotes.push('Abandonment fears often stem from early experiences - your nervous system learned to be hypervigilant about relationship threats');
+// //         }
+// //       }
+
+// //       // Conflict patterns with cultural understanding
+// //       if ([29, 30, 31, 32, 33].includes(questionId)) {
+// //         if (text.includes('shut down') || text.includes('withdraw') || text.includes('silent')) {
+// //           conflictResolutionScore -= 2.0;
+// //           painPoints.push('Emotional shutdown during conflict - your nervous system goes into protective mode but it prevents resolution');
+// //           deepInsights.push('When you shut down, you\'re not being stubborn - your nervous system is overwhelmed and needs safety before it can engage again');
+// //           culturalInsights.push('Silent treatment patterns are common in Indian families but devastating in intimate relationships - what worked in childhood doesn\'t work in marriage');
+// //         }
+        
+// //         if (text.includes('eggshells') || text.includes('avoid') || text.includes('careful')) {
+// //           conflictResolutionScore -= 1.5;
+// //           emotionalBurdenScore += 1.5;
+// //           painPoints.push('Walking on eggshells - you\'ve lost your authentic voice in the relationship');
+// //           deepInsights.push('When you\'re walking on eggshells, you\'re prioritizing peace over truth - but this creates a false peace that slowly kills intimacy');
+// //         }
+// //       }
+
+// //       // Financial stress (Questions 34-35)
+// //       if ([34, 35].includes(questionId)) {
+// //         if (text.includes('fight') || text.includes('stress') || text.includes('pressure')) {
+// //           painPoints.push('Financial stress is affecting your relationship - money conflicts are often about deeper issues of security, control, and values');
+// //           culturalInsights.push('Financial pressures in Indian relationships often include family support expectations - this adds complexity to couple financial planning');
+// //           emotionalBurdenScore += 1.0;
+// //         }
+// //       }
+
+// //       // Positive indicators
+// //       if (text.includes('support') || text.includes('understand') || text.includes('listen')) {
+// //         strengths.push('Shows capacity for emotional support and understanding - the foundation for healthy relationships');
+// //         communicationScore += 0.5;
+// //       }
+      
+// //       if (text.includes('love') || text.includes('care') || text.includes('appreciate')) {
+// //         strengths.push('Maintains emotional connection and appreciation despite challenges - this is your relationship\'s lifeline');
+// //         futureAlignmentScore += 0.5;
+// //       }
+// //     }
+
+// //     // Scale response analysis with psychological context
+// //     if (response.selected_option_id && response.answer_text) {
+// //       const scaleValue = parseInt(response.answer_text) || 5;
+// //       const questionId = parseInt(response.question_id);
+      
+// //       // Family influence scale (Question 6)
+// //       if (questionId === 6) {
+// //         familyInfluenceScore = scaleValue;
+// //         if (scaleValue >= 8) {
+// //           culturalInsights.push('Family has very strong influence on your relationship decisions - this can provide support but may also limit autonomy');
+// //         } else if (scaleValue <= 3) {
+// //           culturalInsights.push('You maintain strong independence from family influence - this supports couple autonomy but may create family tension');
+// //         }
+// //       }
+      
+// //       // Communication effectiveness
+// //       if ([1, 5].includes(questionId)) {
+// //         if (scaleValue <= 3) {
+// //           painPoints.push('Low communication effectiveness - this is the foundation that everything else is built on');
+// //           communicationScore -= 1.5;
+// //         } else if (scaleValue >= 8) {
+// //           strengths.push('Strong communication foundation - you have the tools for working through challenges');
+// //           communicationScore += 1.0;
+// //         }
+// //       }
+      
+// //       // Trust levels
+// //       if ([18].includes(questionId)) {
+// //         if (scaleValue <= 4) {
+// //           redFlags.push('Significant trust and security deficits - your nervous system doesn\'t feel safe in this relationship');
+// //           trustScore -= 2.0;
+// //         }
+// //       }
+      
+// //       // Emotional connection
+// //       if ([15, 21, 25].includes(questionId)) {
+// //         if (scaleValue <= 3) {
+// //           painPoints.push('Low emotional intimacy - you\'re living parallel lives instead of intertwined ones');
+// //           intimacyScore -= 1.5;
+// //         }
+// //       }
+// //     }
+// //   });
+
+// //   // Ensure scores stay within realistic bounds
+// //   communicationScore = Math.max(1, Math.min(10, communicationScore));
+// //   emotionalBurdenScore = Math.max(1, Math.min(10, emotionalBurdenScore));
+// //   trustScore = Math.max(1, Math.min(10, trustScore));
+// //   intimacyScore = Math.max(1, Math.min(10, intimacyScore));
+// //   conflictResolutionScore = Math.max(1, Math.min(10, conflictResolutionScore));
+// //   futureAlignmentScore = Math.max(1, Math.min(10, futureAlignmentScore));
+// //   familyInfluenceScore = Math.max(1, Math.min(10, familyInfluenceScore));
+// //   culturalAdaptationScore = Math.max(1, Math.min(10, culturalAdaptationScore));
+
+// //   // Generate comprehensive recommendations based on scores
+// //   const allRecommendations = [
+// //     // Communication recommendations
+// //     'Practice the "Speaker-Listener Technique" adapted for Indian couples: One person speaks their truth while the other listens with their heart, not their defenses',
+// //     'Create a daily "connection ritual" - 15 minutes of device-free conversation about feelings, not logistics',
+// //     'Use "I" statements instead of "you" accusations: "I feel unheard when..." instead of "You never listen..."',
+// //     'Establish a weekly "relationship check-in" where you both share appreciations and concerns without judgment',
+// //     'Learn each other\'s "emotional language" - some people need words, others need actions, touch, or quality time',
+    
+// //     // Trust recommendations
+// //     'Rebuild trust through "Emotional Transparency" - share one vulnerable truth weekly and respond with empathy, not solutions',
+// //     'Implement a "Repair Ritual" - when trust breaks, follow these steps: acknowledge the hurt, take responsibility, and create a plan to rebuild',
+// //     'Practice "Benefit of the Doubt" - assume positive intent until proven otherwise, especially during misunderstandings',
+// //     'Create "Trust Deposits" - small, consistent actions that build security over time',
+// //     'Address past betrayals with professional help if they continue to impact your present relationship',
+    
+// //     // Family/Cultural recommendations
+// //     'Practice "Respectful Boundary Setting" with family - honor their love while protecting your relationship\'s autonomy',
+// //     'Create a "United Front" strategy with your partner for handling family pressures together',
+// //     'Develop scripts for common family situations: "We appreciate your concern and will consider your advice"',
+// //     'Balance tradition with personal values - keep what serves your relationship, respectfully modify what doesn\'t',
+// //     'Educate family members about your relationship choices with patience and consistency',
+    
+// //     // Intimacy recommendations
+// //     'Try the "Daily Appreciation Practice" - share one specific thing you appreciate about your partner every day',
+// //     'Institute "Sacred Time" - 30 minutes daily of undivided attention to each other, no phones, no distractions',
+// //     'Practice "Emotional Mirroring" - reflect back what you hear your partner saying before responding',
+// //     'Create "Intimacy Rituals" - special ways of connecting that are unique to your relationship',
+// //     'Share your "Love Map" - learn the details of your partner\'s inner world, dreams, fears, and hopes',
+    
+// //     // Conflict resolution recommendations
+// //     'Learn to "Take a Break" when emotions escalate - agree on a time to return and discuss calmly',
+// //     'Practice "Fighting Fair" - no name-calling, no bringing up the past, focus on the current issue only',
+// //     'Use the "Softened Startup" - begin difficult conversations with appreciation and your own feelings',
+// //     'Develop "Repair Attempts" - humor, affection, or acknowledgment to de-escalate during arguments',
+// //     'Create a "Conflict Resolution Plan" - agreed-upon steps for handling disagreements constructively',
+    
+// //     // Future alignment recommendations
+// //     'Schedule monthly "Vision Meetings" to discuss your shared goals and dreams',
+// //     'Create a "Relationship Mission Statement" - your shared values and purpose as a couple',
+// //     'Practice "Future Visioning" - regularly discuss where you want to be in 1, 5, and 10 years',
+// //     'Align your individual goals with your relationship goals - find ways to support each other\'s growth',
+// //     'Celebrate progress together - acknowledge the positive changes you\'re making as a couple'
+// //   ];
+
+// //   // Select relevant recommendations based on scores
+// //   if (communicationScore < 6) {
+// //     recommendations.push(...allRecommendations.slice(0, 5));
+// //   }
+// //   if (trustScore < 6) {
+// //     recommendations.push(...allRecommendations.slice(5, 10));
+// //   }
+// //   if (familyInfluenceScore > 7.5 || culturalAdaptationScore < 6) {
+// //     recommendations.push(...allRecommendations.slice(10, 15));
+// //   }
+// //   if (intimacyScore < 6) {
+// //     recommendations.push(...allRecommendations.slice(15, 20));
+// //   }
+// //   if (conflictResolutionScore < 6) {
+// //     recommendations.push(...allRecommendations.slice(20, 25));
+// //   }
+// //   if (futureAlignmentScore < 6) {
+// //     recommendations.push(...allRecommendations.slice(25, 30));
+// //   }
+
+// //   // Add cultural insights if none found
+// //   if (culturalInsights.length === 0) {
+// //     culturalInsights.push('You\'re navigating the beautiful complexity of modern Indian relationships - honoring tradition while creating your own path');
+// //   }
+
+// //   // Add default strengths if none found
+// //   if (strengths.length === 0) {
+// //     strengths.push('Your willingness to examine your relationship deeply shows maturity and commitment to growth');
+// //     strengths.push('You\'re taking responsibility for your part in the relationship dynamics - this is the first step toward positive change');
+// //   }
+
+// //   // Generate counselor-like emotional summary
+// //   const overallScore = (communicationScore + trustScore + intimacyScore + conflictResolutionScore + futureAlignmentScore) / 5;
+// //   let emotionalSummary = '';
+  
+// //   if (overallScore >= 7.5) {
+// //     emotionalSummary = 'I can see you have a fundamentally strong relationship with excellent potential for deep fulfillment. You\'re doing many things right, and with some focused attention on the areas we\'ve identified, you can create the extraordinary partnership you both deserve. Your commitment to growth is already your greatest strength.';
+// //   } else if (overallScore >= 6.0) {
+// //     emotionalSummary = 'Your relationship has solid bones and genuine potential, but I can feel the pain in some of your responses. The challenges you\'re facing are real and valid, but they\'re also workable with the right tools and commitment from both of you. You\'re not broken - you\'re just stuck in patterns that aren\'t serving you anymore.';
+// //   } else if (overallScore >= 4.5) {
+// //     emotionalSummary = 'I hear the deep pain and frustration in your responses, and I want you to know that what you\'re experiencing is valid and understandable. Your relationship is facing significant challenges that need immediate, sustained attention. This isn\'t about blame - it\'s about recognizing that the current patterns are causing real harm and need to change. Professional support could be invaluable right now.';
+// //   } else {
+// //     emotionalSummary = 'I can feel the profound pain and exhaustion in your responses, and my heart goes out to you. What you\'re experiencing sounds overwhelming and unsustainable. The patterns in your relationship have become toxic and are likely affecting your mental and physical health. You deserve so much better than this. Please consider both individual and couples therapy, and remember that sometimes the most loving thing is to step back and reassess whether this relationship can become healthy.';
+// //   }
+
+// //   // Determine love language with cultural context
+// //   const loveLanguages = ['Words of Affirmation', 'Quality Time', 'Physical Touch', 'Acts of Service', 'Receiving Gifts'];
+// //   const loveLanguage = loveLanguages[Math.floor(Math.random() * loveLanguages.length)];
+
+// //   return {
+// //     emotional_summary: emotionalSummary,
+// //     emotional_tags: [...new Set(emotionalTags)],
+// //     communication_score: Math.round(communicationScore * 10) / 10,
+// //     emotional_burden_score: Math.round(emotionalBurdenScore * 10) / 10,
+// //     trust_score: Math.round(trustScore * 10) / 10,
+// //     intimacy_score: Math.round(intimacyScore * 10) / 10,
+// //     conflict_resolution_score: Math.round(conflictResolutionScore * 10) / 10,
+// //     future_alignment_score: Math.round(futureAlignmentScore * 10) / 10,
+// //     family_influence_score: Math.round(familyInfluenceScore * 10) / 10,
+// //     cultural_adaptation_score: Math.round(culturalAdaptationScore * 10) / 10,
+// //     love_language_estimate: loveLanguage,
+// //     pain_points: painPoints.slice(0, 8),
+// //     strengths: strengths.slice(0, 6),
+// //     recommendations: [...new Set(recommendations)].slice(0, 12), // Remove duplicates and limit
+// //     red_flags: redFlags.slice(0, 5),
+// //     deep_insights: deepInsights.slice(0, 6),
+// //     cultural_insights: culturalInsights.slice(0, 4),
+// //     counselor_notes: counselorNotes.slice(0, 4)
+// //   };
+// // };
+
+// // // Generate couple analysis from both partners' individual reports
+// // const generateCoupleAnalysis = async (userReport, partnerReport) => {
+// //   // Calculate compatibility scores
+// //   const compatibilityScore = Math.round(((
+// //     (userReport.communication_score + partnerReport.communication_score) / 2 +
+// //     (userReport.trust_score + partnerReport.trust_score) / 2 +
+// //     (userReport.intimacy_score + partnerReport.intimacy_score) / 2 +
+// //     (userReport.conflict_resolution_score + partnerReport.conflict_resolution_score) / 2 +
+// //     (userReport.future_alignment_score + partnerReport.future_alignment_score) / 2
+// //   ) / 5) * 10) / 10;
+
+// //   const communicationHarmony = Math.round(((userReport.communication_score + partnerReport.communication_score) / 2) * 10) / 10;
+// //   const trustAlignment = Math.round(((userReport.trust_score + partnerReport.trust_score) / 2) * 10) / 10;
+// //   const intimacyBalance = Math.round(((userReport.intimacy_score + partnerReport.intimacy_score) / 2) * 10) / 10;
+// //   const conflictResolutionStyle = Math.round(((userReport.conflict_resolution_score + partnerReport.conflict_resolution_score) / 2) * 10) / 10;
+// //   const futureVisionAlignment = Math.round(((userReport.future_alignment_score + partnerReport.future_alignment_score) / 2) * 10) / 10;
+// //   const culturalAdaptationSync = Math.round(((userReport.cultural_adaptation_score + partnerReport.cultural_adaptation_score) / 2) * 10) / 10;
+
+// //   // Determine compatibility level
+// //   let compatibilityLevel = 'Good';
+// //   if (compatibilityScore >= 8.5) compatibilityLevel = 'Excellent';
+// //   else if (compatibilityScore >= 7.5) compatibilityLevel = 'Very Good';
+// //   else if (compatibilityScore >= 6.5) compatibilityLevel = 'Good';
+// //   else if (compatibilityScore >= 5.5) compatibilityLevel = 'Fair';
+// //   else compatibilityLevel = 'Needs Work';
+
+// //   // Generate shared strengths
+// //   const sharedStrengths = [
+// //     'Both partners show commitment to understanding and improving the relationship',
+// //     'You share similar values about the importance of emotional connection',
+// //     'There\'s mutual respect for each other\'s perspectives and feelings',
+// //     'Both of you are willing to work on personal growth for the relationship',
+// //     'You have complementary strengths that balance each other well',
+// //     'Strong foundation of care and affection despite current challenges'
+// //   ];
+
+// //   // Generate growth areas
+// //   const growthAreas = [
+// //     'Developing more effective communication patterns during disagreements',
+// //     'Building stronger emotional intimacy through vulnerability and openness',
+// //     'Creating better work-life balance to prioritize relationship time',
+// //     'Aligning expectations about family involvement and boundaries',
+// //     'Improving conflict resolution skills to prevent escalation',
+// //     'Strengthening trust through consistent actions and transparency'
+// //   ];
+
+// //   // Generate couple-specific recommendations
+// //   const coupleRecommendations = [
+// //     'Schedule weekly "relationship meetings" to discuss both appreciations and concerns in a structured way',
+// //     'Practice the "5:1 ratio" - for every criticism or complaint, share five positive observations about your partner',
+// //     'Create a "relationship vision board" together - visualize your shared future and goals as a couple',
+// //     'Implement a "24-hour rule" for major decisions - discuss important choices together before acting',
+// //     'Establish "his time, her time, and our time" - balance individual needs with couple connection',
+// //     'Practice "emotional check-ins" - ask "How are you feeling about us?" regularly',
+// //     'Create rituals for connection: daily appreciation, weekly dates, monthly relationship reviews',
+// //     'Learn each other\'s "emotional triggers" and develop strategies to support during difficult moments',
+// //     'Practice "repair attempts" during conflicts - use humor, affection, or acknowledgment to de-escalate',
+// //     'Develop a "couple mission statement" - define your shared values and purpose together'
+// //   ];
+
+// //   // Generate relationship insights
+// //   const relationshipInsights = [
+// //     'Your relationship patterns show both individual growth needs and couple dynamics that can be transformed with awareness',
+// //     'The cultural context of your relationship adds both richness and complexity - honoring tradition while creating your own path',
+// //     'Your different communication styles can become a strength when you learn to bridge the gap with understanding',
+// //     'The emotional patterns you\'ve developed are protective but may be limiting your capacity for deeper intimacy',
+// //     'Your relationship has the potential for profound growth when both partners feel safe to be vulnerable',
+// //     'The family influences in your relationship require careful navigation to maintain both respect and autonomy'
+// //   ];
+
+// //   // Generate partner messages (simulating the last questionnaire question)
+// //   const partnerMessages = {
+// //     to_partner_a: 'I see how much you care about our relationship and how hard you\'re trying. I want you to know that your efforts don\'t go unnoticed, and I\'m committed to growing together with you. Let\'s create the love story we both deserve.',
+// //     to_partner_b: 'Your patience and understanding mean everything to me. I know I\'m not perfect, but I want to be the partner you need. Thank you for believing in us and for being willing to work through our challenges together.'
+// //   };
+
+// //   // Generate couple summary
+// //   const coupleSummary = `Your relationship shows genuine potential for deep fulfillment and lasting happiness. While you face some common challenges that many couples navigate, your mutual commitment to growth and understanding creates a strong foundation for positive change. The key is learning to see your differences as complementary strengths rather than sources of conflict. With the right tools and consistent effort from both partners, you can build the extraordinary relationship you both desire.`;
+
+// //   return {
+// //     compatibility_score: compatibilityScore,
+// //     communication_harmony: communicationHarmony,
+// //     trust_alignment: trustAlignment,
+// //     intimacy_balance: intimacyBalance,
+// //     conflict_resolution_style: conflictResolutionStyle,
+// //     future_vision_alignment: futureVisionAlignment,
+// //     cultural_adaptation_sync: culturalAdaptationSync,
+// //     compatibility_level: compatibilityLevel,
+// //     shared_strengths: sharedStrengths,
+// //     growth_areas: growthAreas,
+// //     couple_recommendations: coupleRecommendations,
+// //     relationship_insights: relationshipInsights,
+// //     partner_messages: partnerMessages,
+// //     couple_summary: coupleSummary
+// //   };
+// // };
+
+// // // Generate AI report for completed questionnaire
+// // const generateReport = async (req, res) => {
+// //   try {
+// //     const { sessionId } = req.params;
+// //     const userId = req.user.id;
+
+// //     // Verify session belongs to user and is completed
+// //     const sessionResult = await pool.query(
+// //       'SELECT id, status FROM user_questionnaire_sessions WHERE id = $1 AND user_id = $2 AND status = $3',
+// //       [sessionId, userId, 'completed']
+// //     );
+
+// //     if (sessionResult.rows.length === 0) {
+// //       return res.status(404).json({
+// //         success: false,
+// //         message: 'Completed questionnaire session not found'
+// //       });
+// //     }
+
+// //     // Check if report already exists
+// //     const existingReport = await pool.query(
+// //       'SELECT id FROM ai_reports WHERE session_id = $1',
+// //       [sessionId]
+// //     );
+
+// //     if (existingReport.rows.length > 0) {
+// //       return res.status(400).json({
+// //         success: false,
+// //         message: 'Report already generated for this session'
+// //       });
+// //     }
+
+// //     // Get all responses for this session with question details
+// //     const responsesResult = await pool.query(
+// //       `SELECT qr.*, q.question_text, q.type, qc.name as category, qo.option_text
+// //        FROM question_responses qr
+// //        JOIN questions q ON qr.question_id = q.id
+// //        JOIN question_categories qc ON q.category_id = qc.id
+// //        LEFT JOIN question_options qo ON qr.selected_option_id = qo.id
+// //        WHERE qr.session_id = $1
+// //        ORDER BY q.priority`,
+// //       [sessionId]
+// //     );
+
+// //     const responses = responsesResult.rows;
+
+// //     if (responses.length === 0) {
+// //       return res.status(400).json({
+// //         success: false,
+// //         message: 'No responses found for this session'
+// //       });
+// //     }
+
+// //     // Generate enhanced psychological analysis (no AI API needed)
+// //     console.log('🧠 Generating enhanced psychological analysis with Indian cultural context');
+// //     const analysis = await generateEnhancedMockAnalysis(responses);
+
+// //     // Save comprehensive AI report
+// //     const reportResult = await pool.query(
+// //       `INSERT INTO ai_reports (
+// //         session_id, user_id, emotional_summary, emotional_tags,
+// //         communication_score, emotional_burden_score, love_language_estimate,
+// //         report_json
+// //       ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+// //       RETURNING id, created_at`,
+// //       [
+// //         sessionId,
+// //         userId,
+// //         analysis.emotional_summary,
+// //         analysis.emotional_tags,
+// //         analysis.communication_score,
+// //         analysis.emotional_burden_score,
+// //         analysis.love_language_estimate,
+// //         JSON.stringify({
+// //           trust_score: analysis.trust_score,
+// //           intimacy_score: analysis.intimacy_score,
+// //           conflict_resolution_score: analysis.conflict_resolution_score,
+// //           future_alignment_score: analysis.future_alignment_score,
+// //           family_influence_score: analysis.family_influence_score,
+// //           cultural_adaptation_score: analysis.cultural_adaptation_score,
+// //           pain_points: analysis.pain_points,
+// //           strengths: analysis.strengths,
+// //           recommendations: analysis.recommendations,
+// //           red_flags: analysis.red_flags,
+// //           deep_insights: analysis.deep_insights,
+// //           cultural_insights: analysis.cultural_insights,
+// //           counselor_notes: analysis.counselor_notes,
+// //           analysis_version: '5.0',
+// //           ai_provider: 'enhanced_psychological_analysis'
+// //         })
+// //       ]
+// //     );
+
+// //     res.status(201).json({
+// //       success: true,
+// //       message: 'Comprehensive relationship analysis generated successfully',
+// //       data: {
+// //         reportId: reportResult.rows[0].id,
+// //         sessionId: sessionId,
+// //         analysis: analysis,
+// //         createdAt: reportResult.rows[0].created_at
+// //       }
+// //     });
+// //   } catch (error) {
+// //     console.error('Generate AI report error:', error);
+// //     res.status(500).json({
+// //       success: false,
+// //       message: 'Internal server error'
+// //     });
+// //   }
+// // };
+
+// // // Get existing report
+// // const getReport = async (req, res) => {
+// //   try {
+// //     const userId = req.user.id;
+
+// //     const reportResult = await pool.query(
+// //       `SELECT ar.*, uqs.session_name 
+// //        FROM ai_reports ar
+// //        JOIN user_questionnaire_sessions uqs ON ar.session_id = uqs.id
+// //        WHERE ar.user_id = $1
+// //        ORDER BY ar.created_at DESC
+// //        LIMIT 1`,
+// //       [userId]
+// //     );
+
+// //     if (reportResult.rows.length === 0) {
+// //       return res.status(404).json({
+// //         success: false,
+// //         message: 'No report found for this user'
+// //       });
+// //     }
+
+// //     const report = reportResult.rows[0];
+// //     const reportData = report.report_json || {};
+
+// //     res.json({
+// //       success: true,
+// //       data: {
+// //         reportId: report.id,
+// //         sessionId: report.session_id,
+// //         analysis: {
+// //           emotional_summary: report.emotional_summary,
+// //           emotional_tags: report.emotional_tags,
+// //           communication_score: report.communication_score,
+// //           emotional_burden_score: report.emotional_burden_score,
+// //           love_language_estimate: report.love_language_estimate,
+// //           trust_score: reportData.trust_score,
+// //           intimacy_score: reportData.intimacy_score,
+// //           conflict_resolution_score: reportData.conflict_resolution_score,
+// //           future_alignment_score: reportData.future_alignment_score,
+// //           family_influence_score: reportData.family_influence_score,
+// //           cultural_adaptation_score: reportData.cultural_adaptation_score,
+// //           pain_points: reportData.pain_points || [],
+// //           strengths: reportData.strengths || [],
+// //           recommendations: reportData.recommendations || [],
+// //           red_flags: reportData.red_flags || [],
+// //           deep_insights: reportData.deep_insights || [],
+// //           cultural_insights: reportData.cultural_insights || [],
+// //           counselor_notes: reportData.counselor_notes || []
+// //         },
+// //         createdAt: report.created_at
+// //       }
+// //     });
+// //   } catch (error) {
+// //     console.error('Get report error:', error);
+// //     res.status(500).json({
+// //       success: false,
+// //       message: 'Internal server error'
+// //     });
+// //   }
+// // };
+
+// // // Generate couple report
+// // const generateCoupleReport = async (req, res) => {
+// //   try {
+// //     const userId = req.user.id;
+
+// //     // Check if user is paired
+// //     const coupleResult = await pool.query(
+// //       'SELECT id, partner_a_id, partner_b_id FROM couples WHERE partner_a_id = $1 OR partner_b_id = $1',
+// //       [userId]
+// //     );
+
+// //     if (coupleResult.rows.length === 0) {
+// //       return res.status(400).json({
+// //         success: false,
+// //         message: 'You need to be paired with a partner to generate a couple report'
+// //       });
+// //     }
+
+// //     const couple = coupleResult.rows[0];
+// //     const partnerId = couple.partner_a_id === userId ? couple.partner_b_id : couple.partner_a_id;
+
+// //     // Check if both partners have completed questionnaires and have reports
+// //     const userReportResult = await pool.query(
+// //       'SELECT * FROM ai_reports WHERE user_id = $1 ORDER BY created_at DESC LIMIT 1',
+// //       [userId]
+// //     );
+
+// //     const partnerReportResult = await pool.query(
+// //       'SELECT * FROM ai_reports WHERE user_id = $1 ORDER BY created_at DESC LIMIT 1',
+// //       [partnerId]
+// //     );
+
+// //     if (userReportResult.rows.length === 0 || partnerReportResult.rows.length === 0) {
+// //       return res.status(400).json({
+// //         success: false,
+// //         message: 'Both partners need to complete the questionnaire and generate individual reports first'
+// //       });
+// //     }
+
+// //     // Check if couple report already exists
+// //     const existingCoupleReport = await pool.query(
+// //       'SELECT id FROM relationsync_reflections WHERE couple_id = $1',
+// //       [couple.id]
+// //     );
+
+// //     if (existingCoupleReport.rows.length > 0) {
+// //       return res.status(400).json({
+// //         success: false,
+// //         message: 'Couple report already exists'
+// //       });
+// //     }
+
+// //     const userReport = userReportResult.rows[0];
+// //     const partnerReport = partnerReportResult.rows[0];
+
+// //     // Parse report JSON data
+// //     const userReportData = {
+// //       ...userReport,
+// //       ...userReport.report_json
+// //     };
+// //     const partnerReportData = {
+// //       ...partnerReport,
+// //       ...partnerReport.report_json
+// //     };
+
+// //     // Generate couple analysis
+// //     const coupleAnalysis = await generateCoupleAnalysis(userReportData, partnerReportData);
+
+// //     // Save couple report
+// //     const coupleReportResult = await pool.query(
+// //       `INSERT INTO relationsync_reflections (
+// //         couple_id, report_summary, direct_messages, insight_points, compatibility_level
+// //       ) VALUES ($1, $2, $3, $4, $5)
+// //       RETURNING id, created_at`,
+// //       [
+// //         couple.id,
+// //         coupleAnalysis.couple_summary,
+// //         JSON.stringify(coupleAnalysis.partner_messages),
+// //         JSON.stringify(coupleAnalysis),
+// //         coupleAnalysis.compatibility_level
+// //       ]
+// //     );
+
+// //     res.status(201).json({
+// //       success: true,
+// //       message: 'Couple report generated successfully',
+// //       data: {
+// //         reportId: coupleReportResult.rows[0].id,
+// //         coupleId: couple.id,
+// //         analysis: coupleAnalysis,
+// //         createdAt: coupleReportResult.rows[0].created_at
+// //       }
+// //     });
+// //   } catch (error) {
+// //     console.error('Generate couple report error:', error);
+// //     res.status(500).json({
+// //       success: false,
+// //       message: 'Internal server error'
+// //     });
+// //   }
+// // };
+
+// // // Get couple report
+// // const getCoupleReport = async (req, res) => {
+// //   try {
+// //     const userId = req.user.id;
+
+// //     // Check if user is paired
+// //     const coupleResult = await pool.query(
+// //       'SELECT id FROM couples WHERE partner_a_id = $1 OR partner_b_id = $1',
+// //       [userId]
+// //     );
+
+// //     if (coupleResult.rows.length === 0) {
+// //       return res.status(404).json({
+// //         success: false,
+// //         message: 'No couple connection found'
+// //       });
+// //     }
+
+// //     const coupleId = coupleResult.rows[0].id;
+
+// //     // Get couple report
+// //     const reportResult = await pool.query(
+// //       'SELECT * FROM relationsync_reflections WHERE couple_id = $1 ORDER BY created_at DESC LIMIT 1',
+// //       [coupleId]
+// //     );
+
+// //     if (reportResult.rows.length === 0) {
+// //       return res.status(404).json({
+// //         success: false,
+// //         message: 'No couple report found'
+// //       });
+// //     }
+
+// //     const report = reportResult.rows[0];
+
+// //     res.json({
+// //       success: true,
+// //       data: {
+// //         reportId: report.id,
+// //         coupleId: coupleId,
+// //         analysis: report.insight_points,
+// //         createdAt: report.created_at
+// //       }
+// //     });
+// //   } catch (error) {
+// //     console.error('Get couple report error:', error);
+// //     res.status(500).json({
+// //       success: false,
+// //       message: 'Internal server error'
+// //     });
+// //   }
+// // };
+
+// // module.exports = {
+// //   generateReport,
+// //   getReport,
+// //   generateCoupleReport,
+// //   getCoupleReport
+// // };
+
+
+
+
+
+
+// // OLD NOW NEW 
+// // Enhanced mock analysis with deep psychological insights and Indian cultural context
+// // const generateEnhancedMockAnalysis = async (responses) => {
+// //   const emotionalTags = [];
+// //   const painPoints = [];
+// //   const strengths = [];
+// //   const recommendations = [];
+// //   const redFlags = [];
+// //   const deepInsights = [];
+// //   const culturalInsights = [];
+// //   const counselorNotes = [];
+
+// //   // Initialize scoring with realistic baselines
+// //   let communicationScore = 6.5;
+// //   let emotionalBurdenScore = 5.5;
+// //   let trustScore = 7.0;
+// //   let intimacyScore = 6.0;
+// //   let conflictResolutionScore = 6.2;
+// //   let futureAlignmentScore = 6.8;
+// //   let familyInfluenceScore = 7.0;
+// //   let culturalAdaptationScore = 6.5;
+
+// //   // Analyze responses with deep psychological and cultural understanding
+// //   responses.forEach(response => {
+// //     if (response.answer_text) {
+// //       const text = response.answer_text.toLowerCase();
+// //       const questionId = parseInt(response.question_id);
+      
+// //       // Family influence analysis (Questions 6-10)
+// //       if ([6, 7, 8, 9, 10].includes(questionId)) {
+// //         if (text.includes('family pressure') || text.includes('expectations') || text.includes('tradition')) {
+// //           familyInfluenceScore += 1.5;
+// //           culturalInsights.push('Family expectations are playing a significant role in shaping your relationship decisions - this is both a strength and a challenge in Indian relationships');
+          
+// //           if (text.includes('torn') || text.includes('conflict') || text.includes('struggle')) {
+// //             painPoints.push('Feeling caught between family expectations and personal desires - a common but painful experience for many Indian couples');
+// //             emotionalBurdenScore += 1.5;
+// //             counselorNotes.push('You\'re navigating the delicate balance between honoring family and building your own relationship - this takes tremendous emotional energy');
+// //           }
+// //         }
+        
+// //         if (text.includes('boundaries') || text.includes('independent') || text.includes('our choice')) {
+// //           strengths.push('Shows healthy boundary-setting with family while maintaining respect - a crucial skill in Indian relationships');
+// //           culturalAdaptationScore += 1.0;
+// //         }
+// //       }
+
+// //       // Gender roles analysis (Questions 26-28)
+// //       if ([26, 27, 28].includes(questionId)) {
+// //         if (text.includes('traditional') && text.includes('tension')) {
+// //           painPoints.push('Traditional gender role expectations are creating friction in your modern relationship');
+// //           culturalInsights.push('You\'re part of a generation redefining gender roles in Indian relationships - this transition is challenging but necessary');
+// //           conflictResolutionScore -= 1.0;
+// //         }
+        
+// //         if (text.includes('balance') || text.includes('equal') || text.includes('support')) {
+// //           strengths.push('Successfully navigating the evolution from traditional to egalitarian partnership');
+// //           culturalAdaptationScore += 1.5;
+// //         }
+// //       }
+
+// //       // Communication patterns with cultural context
+// //       if ([1, 2, 3, 4, 5].includes(questionId)) {
+// //         if (text.includes('misunderstood') || text.includes('not heard')) {
+// //           painPoints.push('Communication breakdown: Feeling unheard and misunderstood - often rooted in different communication styles learned in childhood');
+// //           communicationScore -= 1.5;
+// //           counselorNotes.push('Your communication style may have been shaped by family patterns where direct emotional expression wasn\'t encouraged');
+// //         }
+        
+// //         if (text.includes('fine') && questionId === 5) {
+// //           painPoints.push('The "I\'m fine" pattern - a common defense mechanism that prevents real intimacy');
+// //           deepInsights.push('Saying "I\'m fine" when you\'re not is often learned behavior from families where emotional expression was discouraged - but it\'s killing your emotional connection');
+// //           emotionalTags.push('emotional_suppression');
+// //         }
+// //       }
+
+// //       // Trust and security with cultural nuances
+// //       if ([16, 17, 18, 19, 20].includes(questionId)) {
+// //         if (text.includes('betrayed') || text.includes('lied') || text.includes('cheated')) {
+// //           trustScore -= 3.0;
+// //           emotionalBurdenScore += 2.5;
+// //           redFlags.push('Trust violations have created deep wounds that need professional attention - betrayal trauma affects your nervous system and ability to feel safe');
+// //           counselorNotes.push('Trust betrayal in Indian relationships often carries additional shame due to family and social implications - this compounds the healing process');
+// //         }
+        
+// //         if (text.includes('check phone') || text.includes('suspicious') || text.includes('monitor')) {
+// //           trustScore -= 2.0;
+// //           redFlags.push('Surveillance behaviors indicate your nervous system is in constant threat detection mode - this is exhausting and unsustainable');
+// //           deepInsights.push('When you feel the need to check their phone, you\'re trying to control your anxiety, but it actually increases it - trust is rebuilt through consistent actions, not monitoring');
+// //         }
+// //       }
+
+// //       // Emotional intimacy and vulnerability
+// //       if ([11, 12, 13, 14, 15].includes(questionId)) {
+// //         if (text.includes('lonely') || text.includes('disconnected') || text.includes('misunderstood')) {
+// //           intimacyScore -= 2.0;
+// //           emotionalTags.push('emotional_isolation');
+// //           painPoints.push('Emotional loneliness despite physical presence - you can be in the same room but worlds apart emotionally');
+// //           deepInsights.push('Emotional loneliness in a relationship hurts more than being actually alone because it comes with the added pain of "they\'re right here but don\'t see me"');
+// //         }
+        
+// //         if (text.includes('hide') || text.includes('mask') || text.includes('pretend')) {
+// //           intimacyScore -= 1.5;
+// //           painPoints.push('Hiding parts of yourself to maintain the relationship - but authentic love requires being known fully');
+// //           counselorNotes.push('You\'re protecting yourself by hiding, but you\'re also preventing the deep connection you crave - it\'s a painful paradox');
+// //         }
+        
+// //         if (text.includes('fear') && (text.includes('leaving') || text.includes('abandonment'))) {
+// //           emotionalTags.push('anxious_attachment');
+// //           emotionalBurdenScore += 2.0;
+// //           deepInsights.push('Your fear of abandonment may be driving behaviors that actually push your partner away - anxiety makes us do the opposite of what we need');
+// //           counselorNotes.push('Abandonment fears often stem from early experiences - your nervous system learned to be hypervigilant about relationship threats');
+// //         }
+// //       }
+
+// //       // Conflict patterns with cultural understanding
+// //       if ([29, 30, 31, 32, 33].includes(questionId)) {
+// //         if (text.includes('shut down') || text.includes('withdraw') || text.includes('silent')) {
+// //           conflictResolutionScore -= 2.0;
+// //           painPoints.push('Emotional shutdown during conflict - your nervous system goes into protective mode but it prevents resolution');
+// //           deepInsights.push('When you shut down, you\'re not being stubborn - your nervous system is overwhelmed and needs safety before it can engage again');
+// //           culturalInsights.push('Silent treatment patterns are common in Indian families but devastating in intimate relationships - what worked in childhood doesn\'t work in marriage');
+// //         }
+        
+// //         if (text.includes('eggshells') || text.includes('avoid') || text.includes('careful')) {
+// //           conflictResolutionScore -= 1.5;
+// //           emotionalBurdenScore += 1.5;
+// //           painPoints.push('Walking on eggshells - you\'ve lost your authentic voice in the relationship');
+// //           deepInsights.push('When you\'re walking on eggshells, you\'re prioritizing peace over truth - but this creates a false peace that slowly kills intimacy');
+// //         }
+// //       }
+
+// //       // Financial stress (Questions 34-35)
+// //       if ([34, 35].includes(questionId)) {
+// //         if (text.includes('fight') || text.includes('stress') || text.includes('pressure')) {
+// //           painPoints.push('Financial stress is affecting your relationship - money conflicts are often about deeper issues of security, control, and values');
+// //           culturalInsights.push('Financial pressures in Indian relationships often include family support expectations - this adds complexity to couple financial planning');
+// //           emotionalBurdenScore += 1.0;
+// //         }
+// //       }
+
+// //       // Positive indicators
+// //       if (text.includes('support') || text.includes('understand') || text.includes('listen')) {
+// //         strengths.push('Shows capacity for emotional support and understanding - the foundation for healthy relationships');
+// //         communicationScore += 0.5;
+// //       }
+      
+// //       if (text.includes('love') || text.includes('care') || text.includes('appreciate')) {
+// //         strengths.push('Maintains emotional connection and appreciation despite challenges - this is your relationship\'s lifeline');
+// //         futureAlignmentScore += 0.5;
+// //       }
+// //     }
+
+// //     // Scale response analysis with psychological context
+// //     if (response.selected_option_id && response.answer_text) {
+// //       const scaleValue = parseInt(response.answer_text) || 5;
+// //       const questionId = parseInt(response.question_id);
+      
+// //       // Family influence scale (Question 6)
+// //       if (questionId === 6) {
+// //         familyInfluenceScore = scaleValue;
+// //         if (scaleValue >= 8) {
+// //           culturalInsights.push('Family has very strong influence on your relationship decisions - this can provide support but may also limit autonomy');
+// //         } else if (scaleValue <= 3) {
+// //           culturalInsights.push('You maintain strong independence from family influence - this supports couple autonomy but may create family tension');
+// //         }
+// //       }
+      
+// //       // Communication effectiveness
+// //       if ([1, 5].includes(questionId)) {
+// //         if (scaleValue <= 3) {
+// //           painPoints.push('Low communication effectiveness - this is the foundation that everything else is built on');
+// //           communicationScore -= 1.5;
+// //         } else if (scaleValue >= 8) {
+// //           strengths.push('Strong communication foundation - you have the tools for working through challenges');
+// //           communicationScore += 1.0;
+// //         }
+// //       }
+      
+// //       // Trust levels
+// //       if ([18].includes(questionId)) {
+// //         if (scaleValue <= 4) {
+// //           redFlags.push('Significant trust and security deficits - your nervous system doesn\'t feel safe in this relationship');
+// //           trustScore -= 2.0;
+// //         }
+// //       }
+      
+// //       // Emotional connection
+// //       if ([15, 21, 25].includes(questionId)) {
+// //         if (scaleValue <= 3) {
+// //           painPoints.push('Low emotional intimacy - you\'re living parallel lives instead of intertwined ones');
+// //           intimacyScore -= 1.5;
+// //         }
+// //       }
+// //     }
+// //   });
+
+// //   // Ensure scores stay within realistic bounds
+// //   communicationScore = Math.max(1, Math.min(10, communicationScore));
+// //   emotionalBurdenScore = Math.max(1, Math.min(10, emotionalBurdenScore));
+// //   trustScore = Math.max(1, Math.min(10, trustScore));
+// //   intimacyScore = Math.max(1, Math.min(10, intimacyScore));
+// //   conflictResolutionScore = Math.max(1, Math.min(10, conflictResolutionScore));
+// //   futureAlignmentScore = Math.max(1, Math.min(10, futureAlignmentScore));
+// //   familyInfluenceScore = Math.max(1, Math.min(10, familyInfluenceScore));
+// //   culturalAdaptationScore = Math.max(1, Math.min(10, culturalAdaptationScore));
+
+// //   // Generate comprehensive recommendations based on scores
+// //   const allRecommendations = [
+// //     // Communication recommendations
+// //     'Practice the "Speaker-Listener Technique" adapted for Indian couples: One person speaks their truth while the other listens with their heart, not their defenses',
+// //     'Create a daily "connection ritual" - 15 minutes of device-free conversation about feelings, not logistics',
+// //     'Use "I" statements instead of "you" accusations: "I feel unheard when..." instead of "You never listen..."',
+// //     'Establish a weekly "relationship check-in" where you both share appreciations and concerns without judgment',
+// //     'Learn each other\'s "emotional language" - some people need words, others need actions, touch, or quality time',
+    
+// //     // Trust recommendations
+// //     'Rebuild trust through "Emotional Transparency" - share one vulnerable truth weekly and respond with empathy, not solutions',
+// //     'Implement a "Repair Ritual" - when trust breaks, follow these steps: acknowledge the hurt, take responsibility, and create a plan to rebuild',
+// //     'Practice "Benefit of the Doubt" - assume positive intent until proven otherwise, especially during misunderstandings',
+// //     'Create "Trust Deposits" - small, consistent actions that build security over time',
+// //     'Address past betrayals with professional help if they continue to impact your present relationship',
+    
+// //     // Family/Cultural recommendations
+// //     'Practice "Respectful Boundary Setting" with family - honor their love while protecting your relationship\'s autonomy',
+// //     'Create a "United Front" strategy with your partner for handling family pressures together',
+// //     'Develop scripts for common family situations: "We appreciate your concern and will consider your advice"',
+// //     'Balance tradition with personal values - keep what serves your relationship, respectfully modify what doesn\'t',
+// //     'Educate family members about your relationship choices with patience and consistency',
+    
+// //     // Intimacy recommendations
+// //     'Try the "Daily Appreciation Practice" - share one specific thing you appreciate about your partner every day',
+// //     'Institute "Sacred Time" - 30 minutes daily of undivided attention to each other, no phones, no distractions',
+// //     'Practice "Emotional Mirroring" - reflect back what you hear your partner saying before responding',
+// //     'Create "Intimacy Rituals" - special ways of connecting that are unique to your relationship',
+// //     'Share your "Love Map" - learn the details of your partner\'s inner world, dreams, fears, and hopes',
+    
+// //     // Conflict resolution recommendations
+// //     'Learn to "Take a Break" when emotions escalate - agree on a time to return and discuss calmly',
+// //     'Practice "Fighting Fair" - no name-calling, no bringing up the past, focus on the current issue only',
+// //     'Use the "Softened Startup" - begin difficult conversations with appreciation and your own feelings',
+// //     'Develop "Repair Attempts" - humor, affection, or acknowledgment to de-escalate during arguments',
+// //     'Create a "Conflict Resolution Plan" - agreed-upon steps for handling disagreements constructively',
+    
+// //     // Future alignment recommendations
+// //     'Schedule monthly "Vision Meetings" to discuss your shared goals and dreams',
+// //     'Create a "Relationship Mission Statement" - your shared values and purpose as a couple',
+// //     'Practice "Future Visioning" - regularly discuss where you want to be in 1, 5, and 10 years',
+// //     'Align your individual goals with your relationship goals - find ways to support each other\'s growth',
+// //     'Celebrate progress together - acknowledge the positive changes you\'re making as a couple'
+// //   ];
+
+// //   // Select relevant recommendations based on scores
+// //   if (communicationScore < 6) {
+// //     recommendations.push(...allRecommendations.slice(0, 5));
+// //   }
+// //   if (trustScore < 6) {
+// //     recommendations.push(...allRecommendations.slice(5, 10));
+// //   }
+// //   if (familyInfluenceScore > 7.5 || culturalAdaptationScore < 6) {
+// //     recommendations.push(...allRecommendations.slice(10, 15));
+// //   }
+// //   if (intimacyScore < 6) {
+// //     recommendations.push(...allRecommendations.slice(15, 20));
+// //   }
+// //   if (conflictResolutionScore < 6) {
+// //     recommendations.push(...allRecommendations.slice(20, 25));
+// //   }
+// //   if (futureAlignmentScore < 6) {
+// //     recommendations.push(...allRecommendations.slice(25, 30));
+// //   }
+
+// //   // Add cultural insights if none found
+// //   if (culturalInsights.length === 0) {
+// //     culturalInsights.push('You\'re navigating the beautiful complexity of modern Indian relationships - honoring tradition while creating your own path');
+// //   }
+
+// //   // Add default strengths if none found
+// //   if (strengths.length === 0) {
+// //     strengths.push('Your willingness to examine your relationship deeply shows maturity and commitment to growth');
+// //     strengths.push('You\'re taking responsibility for your part in the relationship dynamics - this is the first step toward positive change');
+// //   }
+
+// //   // Generate counselor-like emotional summary
+// //   const overallScore = (communicationScore + trustScore + intimacyScore + conflictResolutionScore + futureAlignmentScore) / 5;
+// //   let emotionalSummary = '';
+  
+// //   if (overallScore >= 7.5) {
+// //     emotionalSummary = 'I can see you have a fundamentally strong relationship with excellent potential for deep fulfillment. You\'re doing many things right, and with some focused attention on the areas we\'ve identified, you can create the extraordinary partnership you both deserve. Your commitment to growth is already your greatest strength.';
+// //   } else if (overallScore >= 6.0) {
+// //     emotionalSummary = 'Your relationship has solid bones and genuine potential, but I can feel the pain in some of your responses. The challenges you\'re facing are real and valid, but they\'re also workable with the right tools and commitment from both of you. You\'re not broken - you\'re just stuck in patterns that aren\'t serving you anymore.';
+// //   } else if (overallScore >= 4.5) {
+// //     emotionalSummary = 'I hear the deep pain and frustration in your responses, and I want you to know that what you\'re experiencing is valid and understandable. Your relationship is facing significant challenges that need immediate, sustained attention. This isn\'t about blame - it\'s about recognizing that the current patterns are causing real harm and need to change. Professional support could be invaluable right now.';
+// //   } else {
+// //     emotionalSummary = 'I can feel the profound pain and exhaustion in your responses, and my heart goes out to you. What you\'re experiencing sounds overwhelming and unsustainable. The patterns in your relationship have become toxic and are likely affecting your mental and physical health. You deserve so much better than this. Please consider both individual and couples therapy, and remember that sometimes the most loving thing is to step back and reassess whether this relationship can become healthy.';
+// //   }
+
+// //   // Determine love language with cultural context
+// //   const loveLanguages = ['Words of Affirmation', 'Quality Time', 'Physical Touch', 'Acts of Service', 'Receiving Gifts'];
+// //   const loveLanguage = loveLanguages[Math.floor(Math.random() * loveLanguages.length)];
+
+// //   return {
+// //     emotional_summary: emotionalSummary,
+// //     emotional_tags: [...new Set(emotionalTags)],
+// //     communication_score: Math.round(communicationScore * 10) / 10,
+// //     emotional_burden_score: Math.round(emotionalBurdenScore * 10) / 10,
+// //     trust_score: Math.round(trustScore * 10) / 10,
+// //     intimacy_score: Math.round(intimacyScore * 10) / 10,
+// //     conflict_resolution_score: Math.round(conflictResolutionScore * 10) / 10,
+// //     future_alignment_score: Math.round(futureAlignmentScore * 10) / 10,
+// //     family_influence_score: Math.round(familyInfluenceScore * 10) / 10,
+// //     cultural_adaptation_score: Math.round(culturalAdaptationScore * 10) / 10,
+// //     love_language_estimate: loveLanguage,
+// //     pain_points: painPoints.slice(0, 8),
+// //     strengths: strengths.slice(0, 6),
+// //     recommendations: [...new Set(recommendations)].slice(0, 12), // Remove duplicates and limit
+// //     red_flags: redFlags.slice(0, 5),
+// //     deep_insights: deepInsights.slice(0, 6),
+// //     cultural_insights: culturalInsights.slice(0, 4),
+// //     counselor_notes: counselorNotes.slice(0, 4)
+// //   };
+// // };
+
+// const axios = require('axios');
+// const dotenv = require('dotenv');
+
+// dotenv.config();
+// const API_KEY = process.env.GEMINI_API_KEY;
+
+// const generateEnhancedMockAnalysis = async (responses) => {
+//   const emotionalTags = [];
+//   const painPoints = [];
+//   const strengths = [];
+//   const recommendations = [];
+//   const redFlags = [];
+//   const deepInsights = [];
+//   const culturalInsights = [];
+//   const counselorNotes = [];
+
+//   // Initialize scoring with realistic baselines
+//   let communicationScore = 6.5;
+//   let emotionalBurdenScore = 5.5;
+//   let trustScore = 7.0;
+//   let intimacyScore = 6.0;
+//   let conflictResolutionScore = 6.2;
+//   let futureAlignmentScore = 6.8;
+//   let familyInfluenceScore = 7.0;
+//   let culturalAdaptationScore = 6.5;
+
+//   // Separate text-based and rating/choice-based responses
+//   const textResponses = responses.filter(r => r.type === 'text' && r.answer_text);
+//   const ratingChoiceResponses = responses.filter(r => r.selected_option_id || (r.type === 'scale' && r.answer_text));
+
+//   // Decision tree for rating/choice-based answers
+//   ratingChoiceResponses.forEach(response => {
+//     if (response.selected_option_id && response.answer_text) {
+//       const scaleValue = parseInt(response.answer_text) || 5;
+//       const questionId = parseInt(response.question_id);
+
+//       // Family influence scale (Question 6)
+//       if (questionId === 6) {
+//         familyInfluenceScore = scaleValue;
+//         if (scaleValue >= 8) {
+//           culturalInsights.push('Family has very strong influence on your relationship decisions.');
+//         } else if (scaleValue <= 3) {
+//           culturalInsights.push('You maintain strong independence from family influence.');
+//         }
+//       }
+
+//       // Communication effectiveness
+//       if ([1, 5].includes(questionId)) {
+//         if (scaleValue <= 3) {
+//           painPoints.push('Low communication effectiveness.');
+//           communicationScore -= 1.5;
+//         } else if (scaleValue >= 8) {
+//           strengths.push('Strong communication foundation.');
+//           communicationScore += 1.0;
+//         }
+//       }
+
+//       // Trust levels
+//       if ([18].includes(questionId)) {
+//         if (scaleValue <= 4) {
+//           redFlags.push('Significant trust and security deficits.');
+//           trustScore -= 2.0;
+//         }
+//       }
+
+//       // Emotional connection
+//       if ([15, 21, 25].includes(questionId)) {
+//         if (scaleValue <= 3) {
+//           painPoints.push('Low emotional intimacy.');
+//           intimacyScore -= 1.5;
+//         }
+//       }
+//     }
+//   });
+
+//   // Ensure scores stay within realistic bounds
+//   communicationScore = Math.max(1, Math.min(10, communicationScore));
+//   emotionalBurdenScore = Math.max(1, Math.min(10, emotionalBurdenScore));
+//   trustScore = Math.max(1, Math.min(10, trustScore));
+//   intimacyScore = Math.max(1, Math.min(10, intimacyScore));
+//   conflictResolutionScore = Math.max(1, Math.min(10, conflictResolutionScore));
+//   futureAlignmentScore = Math.max(1, Math.min(10, futureAlignmentScore));
+//   familyInfluenceScore = Math.max(1, Math.min(10, familyInfluenceScore));
+//   culturalAdaptationScore = Math.max(1, Math.min(10, culturalAdaptationScore));
+
+//   // Fallback keyword analysis for text responses (used if AI fails)
+//   const fallbackTextAnalysis = () => {
+//     textResponses.forEach(response => {
+//       const text = response.answer_text.toLowerCase();
+//       const questionId = parseInt(response.question_id);
+
+//       if ([6, 7, 8, 9, 10].includes(questionId)) {
+//         if (text.includes('family pressure') || text.includes('expectations') || text.includes('tradition')) {
+//           painPoints.push('Feeling caught between family expectations and personal desires.');
+//           culturalInsights.push('Family expectations shape your relationship decisions.');
+//           emotionalBurdenScore += 1.5;
+//         }
+//         if (text.includes('boundaries') || text.includes('independent')) {
+//           strengths.push('Healthy boundary-setting with family.');
+//           culturalAdaptationScore += 1.0;
+//         }
+//       }
+
+//       if ([26, 27, 28].includes(questionId)) {
+//         if (text.includes('traditional') && text.includes('tension')) {
+//           painPoints.push('Traditional gender roles create friction.');
+//           culturalInsights.push('Redefining gender roles is challenging.');
+//           conflictResolutionScore -= 1.0;
+//         }
+//         if (text.includes('balance') || text.includes('equal')) {
+//           strengths.push('Navigating egalitarian partnership.');
+//           culturalAdaptationScore += 1.5;
+//         }
+//       }
+
+//       if ([1, 2, 3, 4, 5].includes(questionId)) {
+//         if (text.includes('misunderstood') || text.includes('not heard')) {
+//           painPoints.push('Feeling unheard and misunderstood.');
+//           communicationScore -= 1.5;
+//           counselorNotes.push('Communication style may stem from family patterns.');
+//         }
+//         if (text.includes('fine') && questionId === 5) {
+//           painPoints.push('The "I\'m fine" pattern prevents intimacy.');
+//           deepInsights.push('Saying "I\'m fine" is a learned behavior.');
+//           emotionalTags.push('emotional_suppression');
+//         }
+//       }
+
+//       if ([16, 17, 18, 19, 20].includes(questionId)) {
+//         if (text.includes('betrayed') || text.includes('lied') || text.includes('cheated')) {
+//           trustScore -= 3.0;
+//           redFlags.push('Trust violations need attention.');
+//           counselorNotes.push('Betrayal carries cultural shame.');
+//         }
+//         if (text.includes('check phone') || text.includes('suspicious')) {
+//           trustScore -= 2.0;
+//           redFlags.push('Surveillance indicates threat detection.');
+//           deepInsights.push('Checking phones increases anxiety.');
+//         }
+//       }
+
+//       if ([11, 12, 13, 14, 15].includes(questionId)) {
+//         if (text.includes('lonely') || text.includes('disconnected')) {
+//           intimacyScore -= 2.0;
+//           emotionalTags.push('emotional_isolation');
+//           painPoints.push('Emotional loneliness despite presence.');
+//         }
+//         if (text.includes('hide') || text.includes('mask')) {
+//           intimacyScore -= 1.5;
+//           painPoints.push('Hiding prevents authentic love.');
+//           counselorNotes.push('Hiding blocks deep connection.');
+//         }
+//         if (text.includes('fear') && (text.includes('leaving') || text.includes('abandonment'))) {
+//           emotionalTags.push('anxious_attachment');
+//           deepInsights.push('Fear of abandonment may push partner away.');
+//         }
+//       }
+
+//       if ([29, 30, 31, 32, 33].includes(questionId)) {
+//         if (text.includes('shut down') || text.includes('withdraw')) {
+//           conflictResolutionScore -= 2.0;
+//           painPoints.push('Emotional shutdown during conflict.');
+//           deepInsights.push('Shutdown is a protective response.');
+//         }
+//         if (text.includes('eggshells') || text.includes('avoid')) {
+//           conflictResolutionScore -= 1.5;
+//           painPoints.push('Walking on eggshells limits voice.');
+//           deepInsights.push('Avoiding truth kills intimacy.');
+//         }
+//       }
+
+//       if ([34, 35].includes(questionId)) {
+//         if (text.includes('fight') || text.includes('stress')) {
+//           painPoints.push('Financial stress affects security.');
+//           culturalInsights.push('Financial pressures include family expectations.');
+//           emotionalBurdenScore += 1.0;
+//         }
+//       }
+
+//       if (text.includes('support') || text.includes('understand')) {
+//         strengths.push('Capacity for emotional support.');
+//         communicationScore += 0.5;
+//       }
+//       if (text.includes('love') || text.includes('care')) {
+//         strengths.push('Maintains emotional connection.');
+//         futureAlignmentScore += 0.5;
+//       }
+//     });
+//   };
+
+//   // Run fallback analysis to populate initial data
+//   fallbackTextAnalysis();
+
+//   // Prepare context for Gemini AI (text responses only)
+//   const textResponseSummary = textResponses.map(r => ({
+//     question: r.question_text,
+//     answer: r.answer_text,
+//     category: r.category,
+//   }));
+
+//   const scoresSummary = {
+//     communication_score: communicationScore,
+//     emotional_burden_score: emotionalBurdenScore,
+//     trust_score: trustScore,
+//     intimacy_score: intimacyScore,
+//     conflict_resolution_score: conflictResolutionScore,
+//     future_alignment_score: futureAlignmentScore,
+//     family_influence_score: familyInfluenceScore,
+//     cultural_adaptation_score: culturalAdaptationScore,
+//   };
+
+//   // Gemini AI prompt for text-based answers
+//   const prompt = `
+// You are an AI relationship assistant for RelationSync, a platform focused on enhancing relationships with deep understanding of Indian cultural context. Analyze the following text-based questionnaire responses to generate a comprehensive relationship report. Provide empathetic, practical, and culturally sensitive insights for Indian relationship dynamics (e.g., family influence, gender roles, emotional expression). Use the provided scores as context but do not alter them. Return only text-based outputs.
+
+// **Text Responses**:
+// ${JSON.stringify(textResponseSummary, null, 2)}
+
+// **Scores (for context)**:
+// ${JSON.stringify(scoresSummary, null, 2)}
+
+// **Instructions**:
+// 1. **Emotional Summary**: Write a concise, empathetic summary (100-150 words) reflecting the emotional state of the relationship based on text responses and scores. Use a counselor-like tone, incorporating Indian cultural nuances.
+// 2. **Pain Points**: Generate up to 8 specific pain points (short sentences) highlighting challenges from text responses, with psychological and cultural depth.
+// 3. **Strengths**: Generate up to 6 strengths (short sentences) highlighting positive aspects from text responses.
+// 4. **Recommendations**: Generate up to 12 actionable recommendations (short sentences) tailored to text responses and Indian context.
+// 5. **Red Flags**: Generate up to 5 critical issues (short sentences) requiring immediate attention from text responses.
+// 6. **Deep Insights**: Generate up to 6 psychological insights (short sentences) explaining underlying dynamics from text responses, with Indian cultural factors.
+// 7. **Cultural Insights**: Generate up to 4 insights (short sentences) specific to Indian relationship dynamics from text responses.
+// 8. **Counselor Notes**: Generate up to 4 notes (short sentences) as if written by a therapist, offering guidance based on text responses.
+
+// **Output Format**:
+// Return a JSON object with: emotional_summary, pain_points, strengths, recommendations, red_flags, deep_insights, cultural_insights, counselor_notes.
+// `;
+
+//   // Call Gemini API with retry logic
+//  let aiAnalysis;
+//  let attempts = 0;
+//   const maxAttempts = 3;
+//   while (attempts < maxAttempts) {
+//     try {
+//       const response = await axios.post(
+//         `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`,
+//         {
+//           contents: [{ role: 'user', parts: [{ text: prompt }] }],
+//         },
+//         {
+//           headers: { 'Content-Type': 'application/json' },
+//         }
+//       );
+
+//       const responseText = response.data?.candidates?.[0]?.content?.parts?.[0]?.text;
+//       if (!responseText) {
+//         throw new Error('No response from Gemini API');
+//       }
+
+//       aiAnalysis = JSON.parse(responseText);
+//       break;
+//     } catch (error) {
+//       console.error('Gemini API error:', error);
+//       if (error.response?.status === 429) {
+//         attempts++;
+//         if (attempts === maxAttempts) {
+//           console.error('Max retry attempts reached for Gemini API');
+//           aiAnalysis = {
+//             emotional_summary: 'Unable to generate AI analysis due to API limits. Your relationship shows commitment but faces challenges.',
+//             pain_points: painPoints.slice(0, 8),
+//             strengths: strengths.slice(0, 6),
+//             recommendations: [
+//               'Practice active listening to improve communication.',
+//               'Set clear boundaries with family members.',
+//               'Schedule weekly check-ins to discuss feelings.',
+//               'Address trust issues with open conversations.',
+//               'Seek professional help for persistent conflicts.',
+//               'Prioritize quality time to build intimacy.',
+//               'Create a shared vision for your future.',
+//               'Respect cultural traditions while maintaining autonomy.',
+//               'Use "I" statements to express emotions.',
+//               'Practice forgiveness to heal past hurts.',
+//               'Learn each other’s emotional triggers.',
+//               'Balance individual and couple goals.',
+//             ].slice(0, 12),
+//             red_flags: redFlags.slice(0, 5),
+//             deep_insights: deepInsights.slice(0, 6),
+//             cultural_insights: culturalInsights.slice(0, 4),
+//             counselor_notes: counselorNotes.slice(0, 4),
+//           };
+//           break;
+//         }
+//         await new Promise((resolve) => setTimeout(resolve, 1000 * Math.pow(2, attempts)));
+//       } else {
+//         throw error;
+//       }
+//     }
+//   }
+
+//   // Fallback if AI fails
+//   if (!aiAnalysis) {
+//     aiAnalysis = {
+//       emotional_summary: 'Unable to generate AI analysis. Your relationship shows commitment but faces challenges.',
+//       pain_points: painPoints.slice(0, 8),
+//       strengths: strengths.slice(0, 6),
+//       recommendations: [
+//         'Practice active listening to improve communication.',
+//         'Set clear boundaries with family members.',
+//         'Schedule weekly check-ins to discuss feelings.',
+//         'Address trust issues with open conversations.',
+//         'Seek professional help for persistent conflicts.',
+//         'Prioritize quality time to build intimacy.',
+//         'Create a shared vision for your future.',
+//         'Respect cultural traditions while maintaining autonomy.',
+//         'Use "I" statements to express emotions.',
+//         'Practice forgiveness to heal past hurts.',
+//         'Learn each other’s emotional triggers.',
+//         'Balance individual and couple goals.',
+//       ].slice(0, 12),
+//       red_flags: redFlags.slice(0, 5),
+//       deep_insights: deepInsights.slice(0, 6),
+//       cultural_insights: culturalInsights.slice(0, 4),
+//       counselor_notes: counselorNotes.slice(0, 4),
+//     };
+//   }
+
+//   // Add default recommendations based on scores
+//   const allRecommendations = [
+//     'Practice the "Speaker-Listener Technique" for better communication.',
+//     'Create a daily "connection ritual" of 15 minutes.',
+//     'Use "I" statements instead of accusations.',
+//     'Rebuild trust through consistent small actions.',
+//     'Set respectful boundaries with family.',
+//     'Create a united front for family pressures.',
+//     'Try the "Daily Appreciation Practice".',
+//     'Practice "Emotional Mirroring" in conversations.',
+//     'Learn to "Take a Break" during conflicts.',
+//     'Practice "Fighting Fair" without past issues.',
+//     'Schedule monthly "Vision Meetings" for goals.',
+//     'Celebrate progress together as a couple.',
+//   ];
+
+//   if (communicationScore < 6) recommendations.push(...allRecommendations.slice(0, 3));
+//   if (trustScore < 6) recommendations.push(...allRecommendations.slice(3, 4));
+//   if (familyInfluenceScore > 7.5 || culturalAdaptationScore < 6) recommendations.push(...allRecommendations.slice(4, 6));
+//   if (intimacyScore < 6) recommendations.push(...allRecommendations.slice(6, 8));
+//   if (conflictResolutionScore < 6) recommendations.push(...allRecommendations.slice(8, 10));
+//   if (futureAlignmentScore < 6) recommendations.push(...allRecommendations.slice(10, 12));
+
+//   // Add default cultural insights if none
+//   if (culturalInsights.length === 0) {
+//     culturalInsights.push('Navigating modern Indian relationships involves balancing tradition and personal choice.');
+//   }
+
+//   // Add default strengths if none
+//   if (strengths.length === 0) {
+//     strengths.push('Your willingness to examine your relationship shows maturity.');
+//   }
+
+//   // Generate love language
+//   const loveLanguages = ['Words of Affirmation', 'Quality Time', 'Physical Touch', 'Acts of Service', 'Receiving Gifts'];
+//   const loveLanguage = loveLanguages[Math.floor(Math.random() * loveLanguages.length)];
+
+//   // Merge AI and decision tree outputs
+//   return {
+//     emotional_summary: aiAnalysis.emotional_summary,
+//     emotional_tags: [...new Set(emotionalTags)],
+//     communication_score: Math.round(communicationScore * 10) / 10,
+//     emotional_burden_score: Math.round(emotionalBurdenScore * 10) / 10,
+//     trust_score: Math.round(trustScore * 10) / 10,
+//     intimacy_score: Math.round(intimacyScore * 10) / 10,
+//     conflict_resolution_score: Math.round(conflictResolutionScore * 10) / 10,
+//     future_alignment_score: Math.round(futureAlignmentScore * 10) / 10,
+//     family_influence_score: Math.round(familyInfluenceScore * 10) / 10,
+//     cultural_adaptation_score: Math.round(culturalAdaptationScore * 10) / 10,
+//     love_language_estimate: loveLanguage,
+//     pain_points: aiAnalysis.pain_points.slice(0, 8),
+//     strengths: [...new Set([...strengths, ...aiAnalysis.strengths])].slice(0, 6),
+//     recommendations: [...new Set([...recommendations, ...aiAnalysis.recommendations])].slice(0, 12),
+//     red_flags: aiAnalysis.red_flags.slice(0, 5),
+//     deep_insights: aiAnalysis.deep_insights.slice(0, 6),
+//     cultural_insights: [...new Set([...culturalInsights, ...aiAnalysis.cultural_insights])].slice(0, 4),
+//     counselor_notes: aiAnalysis.counselor_notes.slice(0, 4),
+//   };
+// };
+
+// // // [Rest of the code: generateCoupleAnalysis, generateReport, getReport remains unchanged]
+// // const generateCoupleAnalysis = async (userReport, partnerReport) => {
+// //   // [Unchanged code from your original submission]
+// //   const compatibilityScore = Math.round(((
+// //     (userReport.communication_score + partnerReport.communication_score) / 2 +
+// //     (userReport.trust_score + partnerReport.trust_score) / 2 +
+// //     (userReport.intimacy_score + partnerReport.intimacy_score) / 2 +
+// //     (userReport.conflict_resolution_score + partnerReport.conflict_resolution_score) / 2 +
+// //     (userReport.future_alignment_score + partnerReport.future_alignment_score) / 2
+// //   ) / 5) * 10) / 10;
+
+// //   const communicationHarmony = Math.round(((userReport.communication_score + partnerReport.communication_score) / 2) * 10) / 10;
+// //   const trustAlignment = Math.round(((userReport.trust_score + partnerReport.trust_score) / 2) * 10) / 10;
+// //   const intimacyBalance = Math.round(((userReport.intimacy_score + partnerReport.intimacy_score) / 2) * 10) / 10;
+// //   const conflictResolutionStyle = Math.round(((userReport.conflict_resolution_score + partnerReport.conflict_resolution_score) / 2) * 10) / 10;
+// //   const futureVisionAlignment = Math.round(((userReport.future_alignment_score + partnerReport.future_alignment_score) / 2) * 10) / 10;
+// //   const culturalAdaptationSync = Math.round(((userReport.cultural_adaptation_score + partnerReport.cultural_adaptation_score) / 2) * 10) / 10;
+
+// //   let compatibilityLevel = 'Good';
+// //   if (compatibilityScore >= 8.5) compatibilityLevel = 'Excellent';
+// //   else if (compatibilityScore >= 7.5) compatibilityLevel = 'Very Good';
+// //   else if (compatibilityScore >= 6.5) compatibilityLevel = 'Good';
+// //   else if (compatibilityScore >= 5.5) compatibilityLevel = 'Fair';
+// //   else compatibilityLevel = 'Needs Work';
+
+// //   const sharedStrengths = [
+// //     'Both partners show commitment to understanding and improving the relationship',
+// //     'You share similar values about the importance of emotional connection',
+// //     'There\'s mutual respect for each other\'s perspectives and feelings',
+// //     'Both of you are willing to work on personal growth for the relationship',
+// //     'You have complementary strengths that balance each other well',
+// //     'Strong foundation of care and affection despite current challenges'
+// //   ];
+
+// //   const growthAreas = [
+// //     'Developing more effective communication patterns during disagreements',
+// //     'Building stronger emotional intimacy through vulnerability and openness',
+// //     'Creating better work-life balance to prioritize relationship time',
+// //     'Aligning expectations about family involvement and boundaries',
+// //     'Improving conflict resolution skills to prevent escalation',
+// //     'Strengthening trust through consistent actions and transparency'
+// //   ];
+
+// //   const coupleRecommendations = [
+// //     'Schedule weekly "relationship meetings" to discuss both appreciations and concerns in a structured way',
+// //     'Practice the "5:1 ratio" - for every criticism or complaint, share five positive observations about your partner',
+// //     'Create a "relationship vision board" together - visualize your shared future and goals as a couple',
+// //     'Implement a "24-hour rule" for major decisions - discuss important choices together before acting',
+// //     'Establish "his time, her time, and our time" - balance individual needs with couple connection',
+// //     'Practice "emotional check-ins" - ask "How are you feeling about us?" regularly',
+// //     'Create rituals for connection: daily appreciation, weekly dates, monthly relationship reviews',
+// //     'Learn each other\'s "emotional triggers" and develop strategies to support during difficult moments',
+// //     'Practice "repair attempts" during conflicts - use humor, affection, or acknowledgment to de-escalate',
+// //     'Develop a "couple mission statement" - define your shared values and purpose together'
+// //   ];
+
+// //   const relationshipInsights = [
+// //     'Your relationship patterns show both individual growth needs and couple dynamics that can be transformed with awareness',
+// //     'The cultural context of your relationship adds both richness and complexity - honoring tradition while creating your own path',
+// //     'Your different communication styles can become a strength when you learn to bridge the gap with understanding',
+// //     'The emotional patterns you\'ve developed are protective but may be limiting your capacity for deeper intimacy',
+// //     'Your relationship has the potential for profound growth when both partners feel safe to be vulnerable',
+// //     'The family influences in your relationship require careful navigation to maintain both respect and autonomy'
+// //   ];
+
+// //   const partnerMessages = {
+// //     to_partner_a: 'I see how much you care about our relationship and how hard you\'re trying. I want you to know that your efforts don\'t go unnoticed, and I\'m committed to growing together with you. Let\'s create the love story we both deserve.',
+// //     to_partner_b: 'Your patience and understanding mean everything to me. I know I\'m not perfect, but I want to be the partner you need. Thank you for believing in us and for being willing to work through our challenges together.'
+// //   };
+
+// //   const coupleSummary = `Your relationship shows genuine potential for deep fulfillment and lasting happiness. While you face some common challenges that many couples navigate, your mutual commitment to growth and understanding creates a strong foundation for positive change. The key is learning to see your differences as complementary strengths rather than sources of conflict. With the right tools and consistent effort from both partners, you can build the extraordinary relationship you both desire.`;
+
+// //   return {
+// //     compatibility_score: compatibilityScore,
+// //     communication_harmony: communicationHarmony,
+// //     trust_alignment: trustAlignment,
+// //     intimacy_balance: intimacyBalance,
+// //     conflict_resolution_style: conflictResolutionStyle,
+// //     future_vision_alignment: futureVisionAlignment,
+// //     cultural_adaptation_sync: culturalAdaptationSync,
+// //     compatibility_level: compatibilityLevel,
+// //     shared_strengths: sharedStrengths,
+// //     growth_areas: growthAreas,
+// //     couple_recommendations: coupleRecommendations,
+// //     relationship_insights: relationshipInsights,
+// //     partner_messages: partnerMessages,
+// //     couple_summary: coupleSummary
+// //   };
+// // };
+
+// // const generateReport = async (req, res) => {
+// //   try {
+// //     const { sessionId } = req.params;
+// //     const userId = req.user.id;
+
+// //     const sessionResult = await pool.query(
+// //       'SELECT id, status FROM user_questionnaire_sessions WHERE id = $1 AND user_id = $2 AND status = $3',
+// //       [sessionId, userId, 'completed']
+// //     );
+
+// //     if (sessionResult.rows.length === 0) {
+// //       return res.status(404).json({
+// //         success: false,
+// //         message: 'Completed questionnaire session not found'
+// //       });
+// //     }
+
+// //     const existingReport = await pool.query(
+// //       'SELECT id FROM ai_reports WHERE session_id = $1',
+// //       [sessionId]
+// //     );
+
+// //     if (existingReport.rows.length > 0) {
+// //       return res.status(400).json({
+// //         success: false,
+// //         message: 'Report already generated for this session'
+// //       });
+// //     }
+
+// //     const responsesResult = await pool.query(
+// //       `SELECT qr.*, q.question_text, q.type, qc.name as category, qo.option_text
+// //        FROM question_responses qr
+// //        JOIN questions q ON qr.question_id = q.id
+// //        JOIN question_categories qc ON q.category_id = qc.id
+// //        LEFT JOIN question_options qo ON qr.selected_option_id = qo.id
+// //        WHERE qr.session_id = $1
+// //        ORDER BY q.priority`,
+// //       [sessionId]
+// //     );
+
+// //     const responses = responsesResult.rows;
+
+// //     if (responses.length === 0) {
+// //       return res.status(400).json({
+// //         success: false,
+// //         message: 'No responses found for this session'
+// //       });
+// //     }
+
+// //     console.log('🧠 Generating enhanced psychological analysis with Indian cultural context');
+// //     const analysis = await generateEnhancedMockAnalysis(responses);
+
+// //     const communicationScoreInt = Math.round(analysis.communication_score);
+// //     const emotionalBurdenScoreInt = Math.round(analysis.emotional_burden_score);
+
+// //     const reportResult = await pool.query(
+// //       `INSERT INTO ai_reports (
+// //         session_id, user_id, emotional_summary, emotional_tags,
+// //         communication_score, emotional_burden_score, love_language_estimate,
+// //         report_json
+// //       ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+// //       RETURNING id, created_at`,
+// //       [
+// //         sessionId,
+// //         userId,
+// //         analysis.emotional_summary,
+// //         analysis.emotional_tags,
+// //         communicationScoreInt,
+// //         emotionalBurdenScoreInt,
+// //         analysis.love_language_estimate,
+// //         JSON.stringify({
+// //           trust_score: analysis.trust_score,
+// //           intimacy_score: analysis.intimacy_score,
+// //           conflict_resolution_score: analysis.conflict_resolution_score,
+// //           future_alignment_score: analysis.future_alignment_score,
+// //           family_influence_score: analysis.family_influence_score,
+// //           cultural_adaptation_score: analysis.cultural_adaptation_score,
+// //           pain_points: analysis.pain_points,
+// //           strengths: analysis.strengths,
+// //           recommendations: analysis.recommendations,
+// //           red_flags: analysis.red_flags,
+// //           deep_insights: analysis.deep_insights,
+// //           cultural_insights: analysis.cultural_insights,
+// //           counselor_notes: analysis.counselor_notes,
+// //           analysis_version: '5.0',
+// //           ai_provider: 'gemini-1.5-flash'
+// //         })
+// //       ]
+// //     );
+
+// //     res.status(201).json({
+// //       success: true,
+// //       message: 'Comprehensive relationship analysis generated successfully',
+// //       data: {
+// //         reportId: reportResult.rows[0].id,
+// //         sessionId: sessionId,
+// //         analysis: analysis,
+// //         createdAt: reportResult.rows[0].created_at
+// //       }
+// //     });
+// //   } catch (error) {
+// //     console.error('Generate AI report error:', error);
+// //     res.status(500).json({
+// //       success: false,
+// //       message: 'Internal server error'
+// //     });
+// //   }
+// // };
+
+// // const getReport = async (req, res) => {
+// //   try {
+// //     const userId = req.user.id;
+
+// //     const reportResult = await pool.query(
+// //       `SELECT ar.*, uqs.session_name 
+// //        FROM ai_reports ar
+// //        JOIN user_questionnaire_sessions uqs ON ar.session_id = uqs.id
+// //        WHERE ar.user_id = $1
+// //        ORDER BY ar.created_at DESC
+// //        LIMIT 1`,
+// //       [userId]
+// //     );
+
+// //     if (reportResult.rows.length === 0) {
+// //       return res.status(404).json({
+// //         success: false,
+// //         message: 'No report found for this user'
+// //       });
+// //     }
+
+// //     const report = reportResult.rows[0];
+// //     const reportData = report.report_json || {};
+
+// //     res.json({
+// //       success: true,
+// //       data: {
+// //         reportId: report.id,
+// //         sessionId: report.session_id,
+// //         analysis: {
+// //           emotional_summary: report.emotional_summary,
+// //           emotional_tags: report.emotional_tags,
+// //           communication_score: report.communication_score,
+// //           emotional_burden_score: report.emotional_burden_score,
+// //           love_language_estimate: report.love_language_estimate,
+// //           trust_score: reportData.trust_score,
+// //           intimacy_score: reportData.intimacy_score,
+// //           conflict_resolution_score: reportData.conflict_resolution_score,
+// //           future_alignment_score: reportData.future_alignment_score,
+// //           family_influence_score: reportData.family_influence_score,
+// //           cultural_adaptation_score: reportData.cultural_adaptation_score,
+// //           pain_points: reportData.pain_points || [],
+// //           strengths: reportData.strengths || [],
+// //           recommendations: reportData.recommendations || [],
+// //           red_flags: reportData.red_flags || [],
+// //           deep_insights: reportData.deep_insights || [],
+// //           cultural_insights: reportData.cultural_insights || [],
+// //           counselor_notes: reportData.counselor_notes || []
+// //         },
+// //         createdAt: report.created_at
+// //       }
+// //     });
+// //   } catch (error) {
+// //     console.error('Get report error:', error);
+// //     res.status(500).json({
+// //       success: false,
+// //       message: 'Internal server error'
+// //     });
+// //   }
+// // };
+
+// // Generate couple analysis from both partners' individual reports
+// const generateCoupleAnalysis = async (userReport, partnerReport) => {
+//   // Calculate compatibility scores
+//   const compatibilityScore = Math.round(((
+//     (userReport.communication_score + partnerReport.communication_score) / 2 +
+//     (userReport.trust_score + partnerReport.trust_score) / 2 +
+//     (userReport.intimacy_score + partnerReport.intimacy_score) / 2 +
+//     (userReport.conflict_resolution_score + partnerReport.conflict_resolution_score) / 2 +
+//     (userReport.future_alignment_score + partnerReport.future_alignment_score) / 2
+//   ) / 5) * 10) / 10;
+
+//   const communicationHarmony = Math.round(((userReport.communication_score + partnerReport.communication_score) / 2) * 10) / 10;
+//   const trustAlignment = Math.round(((userReport.trust_score + partnerReport.trust_score) / 2) * 10) / 10;
+//   const intimacyBalance = Math.round(((userReport.intimacy_score + partnerReport.intimacy_score) / 2) * 10) / 10;
+//   const conflictResolutionStyle = Math.round(((userReport.conflict_resolution_score + partnerReport.conflict_resolution_score) / 2) * 10) / 10;
+//   const futureVisionAlignment = Math.round(((userReport.future_alignment_score + partnerReport.future_alignment_score) / 2) * 10) / 10;
+//   const culturalAdaptationSync = Math.round(((userReport.cultural_adaptation_score + partnerReport.cultural_adaptation_score) / 2) * 10) / 10;
+
+//   // Determine compatibility level
+//   let compatibilityLevel = 'Good';
+//   if (compatibilityScore >= 8.5) compatibilityLevel = 'Excellent';
+//   else if (compatibilityScore >= 7.5) compatibilityLevel = 'Very Good';
+//   else if (compatibilityScore >= 6.5) compatibilityLevel = 'Good';
+//   else if (compatibilityScore >= 5.5) compatibilityLevel = 'Fair';
+//   else compatibilityLevel = 'Needs Work';
+
+//   // Generate shared strengths
+//   const sharedStrengths = [
+//     'Both partners show commitment to understanding and improving the relationship',
+//     'You share similar values about the importance of emotional connection',
+//     'There\'s mutual respect for each other\'s perspectives and feelings',
+//     'Both of you are willing to work on personal growth for the relationship',
+//     'You have complementary strengths that balance each other well',
+//     'Strong foundation of care and affection despite current challenges'
+//   ];
+
+//   // Generate growth areas
+//   const growthAreas = [
+//     'Developing more effective communication patterns during disagreements',
+//     'Building stronger emotional intimacy through vulnerability and openness',
+//     'Creating better work-life balance to prioritize relationship time',
+//     'Aligning expectations about family involvement and boundaries',
+//     'Improving conflict resolution skills to prevent escalation',
+//     'Strengthening trust through consistent actions and transparency'
+//   ];
+
+//   // Generate couple-specific recommendations
+//   const coupleRecommendations = [
+//     'Schedule weekly "relationship meetings" to discuss both appreciations and concerns in a structured way',
+//     'Practice the "5:1 ratio" - for every criticism or complaint, share five positive observations about your partner',
+//     'Create a "relationship vision board" together - visualize your shared future and goals as a couple',
+//     'Implement a "24-hour rule" for major decisions - discuss important choices together before acting',
+//     'Establish "his time, her time, and our time" - balance individual needs with couple connection',
+//     'Practice "emotional check-ins" - ask "How are you feeling about us?" regularly',
+//     'Create rituals for connection: daily appreciation, weekly dates, monthly relationship reviews',
+//     'Learn each other\'s "emotional triggers" and develop strategies to support during difficult moments',
+//     'Practice "repair attempts" during conflicts - use humor, affection, or acknowledgment to de-escalate',
+//     'Develop a "couple mission statement" - define your shared values and purpose together'
+//   ];
+
+//   // Generate relationship insights
+//   const relationshipInsights = [
+//     'Your relationship patterns show both individual growth needs and couple dynamics that can be transformed with awareness',
+//     'The cultural context of your relationship adds both richness and complexity - honoring tradition while creating your own path',
+//     'Your different communication styles can become a strength when you learn to bridge the gap with understanding',
+//     'The emotional patterns you\'ve developed are protective but may be limiting your capacity for deeper intimacy',
+//     'Your relationship has the potential for profound growth when both partners feel safe to be vulnerable',
+//     'The family influences in your relationship require careful navigation to maintain both respect and autonomy'
+//   ];
+
+//   // Generate partner messages (simulating the last questionnaire question)
+//   const partnerMessages = {
+//     to_partner_a: 'I see how much you care about our relationship and how hard you\'re trying. I want you to know that your efforts don\'t go unnoticed, and I\'m committed to growing together with you. Let\'s create the love story we both deserve.',
+//     to_partner_b: 'Your patience and understanding mean everything to me. I know I\'m not perfect, but I want to be the partner you need. Thank you for believing in us and for being willing to work through our challenges together.'
+//   };
+
+//   // Generate couple summary
+//   const coupleSummary = `Your relationship shows genuine potential for deep fulfillment and lasting happiness. While you face some common challenges that many couples navigate, your mutual commitment to growth and understanding creates a strong foundation for positive change. The key is learning to see your differences as complementary strengths rather than sources of conflict. With the right tools and consistent effort from both partners, you can build the extraordinary relationship you both desire.`;
+
+//   return {
+//     compatibility_score: compatibilityScore,
+//     communication_harmony: communicationHarmony,
+//     trust_alignment: trustAlignment,
+//     intimacy_balance: intimacyBalance,
+//     conflict_resolution_style: conflictResolutionStyle,
+//     future_vision_alignment: futureVisionAlignment,
+//     cultural_adaptation_sync: culturalAdaptationSync,
+//     compatibility_level: compatibilityLevel,
+//     shared_strengths: sharedStrengths,
+//     growth_areas: growthAreas,
+//     couple_recommendations: coupleRecommendations,
+//     relationship_insights: relationshipInsights,
+//     partner_messages: partnerMessages,
+//     couple_summary: coupleSummary
+//   };
+// };
+
+// // Generate AI report for completed questionnaire
+// const generateReport = async (req, res) => {
+//   try {
+//     const { sessionId } = req.params;
+//     const userId = req.user.id;
+
+//     // Verify session belongs to user and is completed
+//     const sessionResult = await pool.query(
+//       'SELECT id, status FROM user_questionnaire_sessions WHERE id = $1 AND user_id = $2 AND status = $3',
+//       [sessionId, userId, 'completed']
+//     );
+
+//     if (sessionResult.rows.length === 0) {
+//       return res.status(404).json({
+//         success: false,
+//         message: 'Completed questionnaire session not found'
+//       });
+//     }
+
+//     // Check if report already exists
+//     const existingReport = await pool.query(
+//       'SELECT id FROM ai_reports WHERE session_id = $1',
+//       [sessionId]
+//     );
+
+//     if (existingReport.rows.length > 0) {
+//       return res.status(400).json({
+//         success: false,
+//         message: 'Report already generated for this session'
+//       });
+//     }
+
+//     // Get all responses for this session with question details
+//     const responsesResult = await pool.query(
+//       `SELECT qr.*, q.question_text, q.type, qc.name as category, qo.option_text
+//        FROM question_responses qr
+//        JOIN questions q ON qr.question_id = q.id
+//        JOIN question_categories qc ON q.category_id = qc.id
+//        LEFT JOIN question_options qo ON qr.selected_option_id = qo.id
+//        WHERE qr.session_id = $1
+//        ORDER BY q.priority`,
+//       [sessionId]
+//     );
+
+//     const responses = responsesResult.rows;
+
+//     if (responses.length === 0) {
+//       return res.status(400).json({
+//         success: false,
+//         message: 'No responses found for this session'
+//       });
+//     }
+
+//     // Generate enhanced psychological analysis (no AI API needed)
+//     console.log('🧠 Generating enhanced psychological analysis with Indian cultural context');
+//     const analysis = await generateEnhancedMockAnalysis(responses);
+
+//     // Convert decimal scores to integers for database storage
+//     const communicationScoreInt = Math.round(analysis.communication_score);
+//     const emotionalBurdenScoreInt = Math.round(analysis.emotional_burden_score);
+
+//     // Save comprehensive AI report
+//     const reportResult = await pool.query(
+//       `INSERT INTO ai_reports (
+//         session_id, user_id, emotional_summary, emotional_tags,
+//         communication_score, emotional_burden_score, love_language_estimate,
+//         report_json
+//       ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+//       RETURNING id, created_at`,
+//       [
+//         sessionId,
+//         userId,
+//         analysis.emotional_summary,
+//         analysis.emotional_tags,
+//         communicationScoreInt,
+//         emotionalBurdenScoreInt,
+//         analysis.love_language_estimate,
+//         JSON.stringify({
+//           trust_score: analysis.trust_score,
+//           intimacy_score: analysis.intimacy_score,
+//           conflict_resolution_score: analysis.conflict_resolution_score,
+//           future_alignment_score: analysis.future_alignment_score,
+//           family_influence_score: analysis.family_influence_score,
+//           cultural_adaptation_score: analysis.cultural_adaptation_score,
+//           pain_points: analysis.pain_points,
+//           strengths: analysis.strengths,
+//           recommendations: analysis.recommendations,
+//           red_flags: analysis.red_flags,
+//           deep_insights: analysis.deep_insights,
+//           cultural_insights: analysis.cultural_insights,
+//           counselor_notes: analysis.counselor_notes,
+//           analysis_version: '5.0',
+//           ai_provider: 'enhanced_psychological_analysis'
+//         })
+//       ]
+//     );
+
+//     res.status(201).json({
+//       success: true,
+//       message: 'Comprehensive relationship analysis generated successfully',
+//       data: {
+//         reportId: reportResult.rows[0].id,
+//         sessionId: sessionId,
+//         analysis: analysis,
+//         createdAt: reportResult.rows[0].created_at
+//       }
+//     });
+//   } catch (error) {
+//     console.error('Generate AI report error:', error);
+//     res.status(500).json({
+//       success: false,
+//       message: 'Internal server error'
+//     });
+//   }
+// };
+
+// // Get existing report
+// const getReport = async (req, res) => {
+//   try {
+//     const userId = req.user.id;
+
+//     const reportResult = await pool.query(
+//       `SELECT ar.*, uqs.session_name 
+//        FROM ai_reports ar
+//        JOIN user_questionnaire_sessions uqs ON ar.session_id = uqs.id
+//        WHERE ar.user_id = $1
+//        ORDER BY ar.created_at DESC
+//        LIMIT 1`,
+//       [userId]
+//     );
+
+//     if (reportResult.rows.length === 0) {
+//       return res.status(404).json({
+//         success: false,
+//         message: 'No report found for this user'
+//       });
+//     }
+
+//     const report = reportResult.rows[0];
+//     const reportData = report.report_json || {};
+
+//     res.json({
+//       success: true,
+//       data: {
+//         reportId: report.id,
+//         sessionId: report.session_id,
+//         analysis: {
+//           emotional_summary: report.emotional_summary,
+//           emotional_tags: report.emotional_tags,
+//           communication_score: report.communication_score,
+//           emotional_burden_score: report.emotional_burden_score,
+//           love_language_estimate: report.love_language_estimate,
+//           trust_score: reportData.trust_score,
+//           intimacy_score: reportData.intimacy_score,
+//           conflict_resolution_score: reportData.conflict_resolution_score,
+//           future_alignment_score: reportData.future_alignment_score,
+//           family_influence_score: reportData.family_influence_score,
+//           cultural_adaptation_score: reportData.cultural_adaptation_score,
+//           pain_points: reportData.pain_points || [],
+//           strengths: reportData.strengths || [],
+//           recommendations: reportData.recommendations || [],
+//           red_flags: reportData.red_flags || [],
+//           deep_insights: reportData.deep_insights || [],
+//           cultural_insights: reportData.cultural_insights || [],
+//           counselor_notes: reportData.counselor_notes || []
+//         },
+//         createdAt: report.created_at
+//       }
+//     });
+//   } catch (error) {
+//     console.error('Get report error:', error);
+//     res.status(500).json({
+//       success: false,
+//       message: 'Internal server error'
+//     });
+//   }
+// };
+
+// // Generate couple report
+// const generateCoupleReport = async (req, res) => {
+//   try {
+//     const userId = req.user.id;
+
+//     // Check if user is paired
+//     const coupleResult = await pool.query(
+//       'SELECT id, partner_a_id, partner_b_id FROM couples WHERE partner_a_id = $1 OR partner_b_id = $1',
+//       [userId]
+//     );
+
+//     if (coupleResult.rows.length === 0) {
+//       return res.status(400).json({
+//         success: false,
+//         message: 'You need to be paired with a partner to generate a couple report'
+//       });
+//     }
+
+//     const couple = coupleResult.rows[0];
+//     const partnerId = couple.partner_a_id === userId ? couple.partner_b_id : couple.partner_a_id;
+
+//     // Check if both partners have completed questionnaires and have reports
+//     const userReportResult = await pool.query(
+//       'SELECT * FROM ai_reports WHERE user_id = $1 ORDER BY created_at DESC LIMIT 1',
+//       [userId]
+//     );
+
+//     const partnerReportResult = await pool.query(
+//       'SELECT * FROM ai_reports WHERE user_id = $1 ORDER BY created_at DESC LIMIT 1',
+//       [partnerId]
+//     );
+
+//     if (userReportResult.rows.length === 0 || partnerReportResult.rows.length === 0) {
+//       return res.status(400).json({
+//         success: false,
+//         message: 'Both partners need to complete the questionnaire and generate individual reports first'
+//       });
+//     }
+
+//     // Check if couple report already exists
+//     const existingCoupleReport = await pool.query(
+//       'SELECT id FROM relationsync_reflections WHERE couple_id = $1',
+//       [couple.id]
+//     );
+
+//     if (existingCoupleReport.rows.length > 0) {
+//       return res.status(400).json({
+//         success: false,
+//         message: 'Couple report already exists'
+//       });
+//     }
+
+//     const userReport = userReportResult.rows[0];
+//     const partnerReport = partnerReportResult.rows[0];
+
+//     // Parse report JSON data
+//     const userReportData = {
+//       ...userReport,
+//       ...userReport.report_json
+//     };
+//     const partnerReportData = {
+//       ...partnerReport,
+//       ...partnerReport.report_json
+//     };
+
+//     // Generate couple analysis
+//     const coupleAnalysis = await generateCoupleAnalysis(userReportData, partnerReportData);
+
+//     // Save couple report
+//     const coupleReportResult = await pool.query(
+//       `INSERT INTO relationsync_reflections (
+//         couple_id, report_summary, direct_messages, insight_points, compatibility_level
+//       ) VALUES ($1, $2, $3, $4, $5)
+//       RETURNING id, created_at`,
+//       [
+//         couple.id,
+//         coupleAnalysis.couple_summary,
+//         JSON.stringify(coupleAnalysis.partner_messages),
+//         JSON.stringify(coupleAnalysis),
+//         coupleAnalysis.compatibility_level
+//       ]
+//     );
+
+//     res.status(201).json({
+//       success: true,
+//       message: 'Couple report generated successfully',
+//       data: {
+//         reportId: coupleReportResult.rows[0].id,
+//         coupleId: couple.id,
+//         analysis: coupleAnalysis,
+//         createdAt: coupleReportResult.rows[0].created_at
+//       }
+//     });
+//   } catch (error) {
+//     console.error('Generate couple report error:', error);
+//     res.status(500).json({
+//       success: false,
+//       message: 'Internal server error'
+//     });
+//   }
+// };
+
+// // Get couple report
+// const getCoupleReport = async (req, res) => {
+//   try {
+//     const userId = req.user.id;
+
+//     // Check if user is paired
+//     const coupleResult = await pool.query(
+//       'SELECT id FROM couples WHERE partner_a_id = $1 OR partner_b_id = $1',
+//       [userId]
+//     );
+
+//     if (coupleResult.rows.length === 0) {
+//       return res.status(404).json({
+//         success: false,
+//         message: 'No couple connection found'
+//       });
+//     }
+
+//     const coupleId = coupleResult.rows[0].id;
+
+//     // Get couple report
+//     const reportResult = await pool.query(
+//       'SELECT * FROM relationsync_reflections WHERE couple_id = $1 ORDER BY created_at DESC LIMIT 1',
+//       [coupleId]
+//     );
+
+//     if (reportResult.rows.length === 0) {
+//       return res.status(404).json({
+//         success: false,
+//         message: 'No couple report found'
+//       });
+//     }
+
+//     const report = reportResult.rows[0];
+
+//     res.json({
+//       success: true,
+//       data: {
+//         reportId: report.id,
+//         coupleId: coupleId,
+//         analysis: report.insight_points,
+//         createdAt: report.created_at
+//       }
+//     });
+//   } catch (error) {
+//     console.error('Get couple report error:', error);
+//     res.status(500).json({
+//       success: false,
+//       message: 'Internal server error'
+//     });
+//   }
+// };
+
+// module.exports = {
+//   generateReport,
+//   getReport,
+//   generateCoupleReport,
+//   getCoupleReport
+// };
