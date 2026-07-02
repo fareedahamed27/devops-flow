@@ -1,0 +1,150 @@
+version: "3.9"
+
+services:
+
+  ###################################
+  # DEVELOPMENT DATABASE
+  ###################################
+
+  postgres-dev:
+    image: postgres:17
+    container_name: postgres-dev
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_USER: ${DEV_DB_USER}
+      POSTGRES_PASSWORD: ${DEV_DB_PASSWORD}
+      POSTGRES_DB: ${DEV_DB_NAME}
+
+    ports:
+      - "5433:5432"
+
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+    healthcheck:
+      test: ["CMD-SHELL","pg_isready -U ${DEV_DB_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  ###################################
+  # DEVELOPMENT BACKEND
+  ###################################
+
+  backend-dev:
+
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+
+    container_name: backend-dev
+
+    restart: unless-stopped
+
+    env_file:
+      - ./backend/.env.dev
+
+    ports:
+      - "5001:5000"
+
+    depends_on:
+      postgres-dev:
+        condition: service_healthy
+
+  ###################################
+  # DEVELOPMENT FRONTEND
+  ###################################
+
+  frontend-dev:
+
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+
+    container_name: frontend-dev
+
+    restart: unless-stopped
+
+    env_file:
+      - ./frontend/.env.dev
+
+    ports:
+      - "5174:5173"
+
+    depends_on:
+      - backend-dev
+
+  ###################################
+  # PRODUCTION DATABASE
+  ###################################
+
+  postgres-prod:
+    image: postgres:17
+    container_name: postgres-prod
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_USER: ${PROD_DB_USER}
+      POSTGRES_PASSWORD: ${PROD_DB_PASSWORD}
+      POSTGRES_DB: ${PROD_DB_NAME}
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_prod_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+    healthcheck:
+      test: ["CMD-SHELL","pg_isready -U ${PROD_DB_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  ###################################
+  # PRODUCTION BACKEND
+  ###################################
+
+  backend-prod:
+
+    image: ${BACKEND_IMAGE}
+
+    container_name: backend-prod
+
+    restart: unless-stopped
+
+    env_file:
+      - ./backend/.env.prod
+
+    ports:
+      - "5000:5000"
+
+    depends_on:
+      postgres-prod:
+        condition: service_healthy
+
+  ###################################
+  # PRODUCTION FRONTEND
+  ###################################
+
+  frontend-prod:
+
+    image: ${FRONTEND_IMAGE}
+
+    container_name: frontend-prod
+
+    restart: unless-stopped
+
+    ports:
+      - "8081:80"
+
+    depends_on:
+      - backend-prod
+
+volumes:
+
+  postgres_dev_data:
+
+  postgres_prod_data:
