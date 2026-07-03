@@ -2,6 +2,8 @@
 -- Run this file to create the entire database schema from scratch
 -- This is designed for local PostgreSQL setup
 
+-- Connect to the target database
+\c fareed
 -- Drop existing tables if they exist (in correct order to avoid foreign key conflicts)
 DROP TABLE IF EXISTS user_pair_ids CASCADE;
 DROP TABLE IF EXISTS notifications CASCADE;

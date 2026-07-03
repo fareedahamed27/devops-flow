@@ -1,0 +1,58 @@
+services:
+  ###################################
+  # DEVELOPMENT DATABASE
+  ###################################
+  postgres-dev:
+    image: postgres:17
+    container_name: postgres-dev
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DEV_DB_USER}
+      POSTGRES_PASSWORD: ${DEV_DB_PASSWORD}
+      POSTGRES_DB: ${DEV_DB_NAME}
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DEV_DB_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  ###################################
+  # DEVELOPMENT BACKEND
+  ###################################
+  backend-dev:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: backend-dev
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env.dev
+    ports:
+      - "5001:5000"
+    depends_on:
+      postgres-dev:
+        condition: service_healthy
+
+  ###################################
+  # DEVELOPMENT FRONTEND
+  ###################################
+  frontend-dev:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: frontend-dev
+    restart: unless-stopped
+    env_file:
+      - ./frontend/.env.dev
+    ports:
+      - "5174:5173"
+    depends_on:
+      - backend-dev
+
+volumes:
+  postgres_dev_data:

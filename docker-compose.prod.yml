@@ -1,0 +1,79 @@
+
+services:
+
+
+
+  ###################################
+  # PRODUCTION DATABASE
+  ###################################
+
+  postgres-prod:
+    image: postgres:17
+    container_name: postgres
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_USER: ${PROD_DB_USER}
+      POSTGRES_PASSWORD: ${PROD_DB_PASSWORD}
+      POSTGRES_DB: ${PROD_DB_NAME}
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_prod_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+    healthcheck:
+      test: ["CMD-SHELL","pg_isready -U ${PROD_DB_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  ###################################
+  # PRODUCTION BACKEND
+  ###################################
+
+  backend-prod:
+
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+
+    container_name: backend-prod
+
+    restart: unless-stopped
+
+    env_file:
+      - ./backend/.env.prod
+
+    ports:
+      - "5000:5000"
+
+    depends_on:
+      postgres-prod:
+        condition: service_healthy
+
+  ###################################
+  # PRODUCTION FRONTEND
+  ###################################
+
+  frontend-prod:
+
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+
+    container_name: frontend-prod
+
+    restart: unless-stopped
+
+    ports:
+      - "8081:80"
+
+    depends_on:
+      - backend-prod
+
+volumes:
+
+  postgres_prod_data:
