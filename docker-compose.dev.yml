@@ -1,7 +1,4 @@
 services:
-  ###################################
-  # DEVELOPMENT DATABASE
-  ###################################
   postgres-dev:
     image: postgres:17
     container_name: postgres-dev
@@ -21,13 +18,8 @@ services:
       timeout: 5s
       retries: 10
 
-  ###################################
-  # DEVELOPMENT BACKEND
-  ###################################
   backend-dev:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile.dev
+    image: 002191735381.dkr.ecr.eu-north-1.amazonaws.com/backend:dev-latest
     container_name: backend-dev
     restart: unless-stopped
     env_file:
@@ -38,13 +30,8 @@ services:
       postgres-dev:
         condition: service_healthy
 
-  ###################################
-  # DEVELOPMENT FRONTEND
-  ###################################
   frontend-dev:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile.dev
+    image: 002191735381.dkr.ecr.eu-north-1.amazonaws.com/frontend:dev-latest
     container_name: frontend-dev
     restart: unless-stopped
     env_file:
