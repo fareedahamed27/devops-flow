@@ -57,7 +57,7 @@ pipeline {
                     sh """
                         ssh -o StrictHostKeyChecking=no ${EC2_HOST} '
                             aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${REGISTRY} &&
-                            cd ~/relationsync &&
+                            cd ~/relationsync/devops-flow &&
                             docker compose -f docker-compose.ec2.prod.yml pull backend-prod frontend-prod &&
                             docker compose -f docker-compose.ec2.prod.yml up -d backend-prod frontend-prod
                         '
