@@ -1,0 +1,66 @@
+pipeline {
+    agent any
+
+    environment {
+        REGISTRY      = "002191735381.dkr.ecr.eu-north-1.amazonaws.com"
+        BACKEND_REPO  = "${REGISTRY}/backend"
+        FRONTEND_REPO = "${REGISTRY}/frontend"
+        AWS_REGION    = "eu-north-1"
+        EC2_HOST      = "ubuntu@13.60.251.149"
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build Dev Images') {
+            steps {
+                sh "docker build -f backend/Dockerfile.dev -t ${BACKEND_REPO}:dev-${GIT_COMMIT} ./backend"
+                sh "docker build -f frontend/Dockerfile.dev -t ${FRONTEND_REPO}:dev-${GIT_COMMIT} ./frontend"
+            }
+        }
+
+        stage('Trivy Scan') {
+            steps {
+                sh "trivy image --severity HIGH,CRITICAL --exit-code 1 ${BACKEND_REPO}:dev-${GIT_COMMIT}"
+                sh "trivy image --severity HIGH,CRITICAL --exit-code 1 ${FRONTEND_REPO}:dev-${GIT_COMMIT}"
+            }
+        }
+
+        stage('Push to ECR') {
+            steps {
+                sh "aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${REGISTRY}"
+                sh "docker tag ${BACKEND_REPO}:dev-${GIT_COMMIT} ${BACKEND_REPO}:dev-latest"
+                sh "docker tag ${FRONTEND_REPO}:dev-${GIT_COMMIT} ${FRONTEND_REPO}:dev-latest"
+                sh "docker push ${BACKEND_REPO}:dev-${GIT_COMMIT}"
+                sh "docker push ${BACKEND_REPO}:dev-latest"
+                sh "docker push ${FRONTEND_REPO}:dev-${GIT_COMMIT}"
+                sh "docker push ${FRONTEND_REPO}:dev-latest"
+            }
+        }
+
+        stage('Deploy Dev to EC2') {
+            steps {
+                sshagent(['ec2-ssh-key']) {
+                    sh """
+                        ssh -o StrictHostKeyChecking=no ${EC2_HOST} '
+                            aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${REGISTRY} &&
+                            cd ~/relationsync &&
+                            docker compose -f docker-compose.ec2.dev.yml pull backend-dev frontend-dev &&
+                            docker compose -f docker-compose.ec2.dev.yml up -d backend-dev frontend-dev
+                        '
+                    """
+                }
+            }
+        }
+    }
+
+    post {
+        success { echo "Dev deployed: http://dev.yourdomain.com" }
+        failure { echo "Dev pipeline failed — check the failing stage above." }
+    }
+}

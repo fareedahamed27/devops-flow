@@ -1,0 +1,75 @@
+pipeline {
+    agent any
+
+    environment {
+        REGISTRY      = "002191735381.dkr.ecr.eu-north-1.amazonaws.com"
+        BACKEND_REPO  = "${REGISTRY}/backend"
+        FRONTEND_REPO = "${REGISTRY}/frontend"
+        AWS_REGION    = "eu-north-1"
+        EC2_HOST      = "ubuntu@13.60.251.149"
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build Prod Images') {
+            steps {
+                sh "docker build -f backend/Dockerfile.prod -t ${BACKEND_REPO}:prod-${GIT_COMMIT} ./backend"
+                sh "docker build -f frontend/Dockerfile.prod -t ${FRONTEND_REPO}:prod-${GIT_COMMIT} ./frontend"
+            }
+        }
+
+        stage('Trivy Scan') {
+            steps {
+                sh "trivy image --severity HIGH,CRITICAL --exit-code 1 ${BACKEND_REPO}:prod-${GIT_COMMIT}"
+                sh "trivy image --severity HIGH,CRITICAL --exit-code 1 ${FRONTEND_REPO}:prod-${GIT_COMMIT}"
+            }
+        }
+
+        stage('Approve Production Deploy') {
+            steps {
+                timeout(time: 30, unit: 'MINUTES') {
+                    input message: "Deploy commit ${GIT_COMMIT} to PRODUCTION?", ok: 'Approve'
+                }
+            }
+        }
+
+        stage('Push to ECR') {
+            steps {
+                sh "aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${REGISTRY}"
+                sh "docker tag ${BACKEND_REPO}:prod-${GIT_COMMIT} ${BACKEND_REPO}:prod-latest"
+                sh "docker tag ${FRONTEND_REPO}:prod-${GIT_COMMIT} ${FRONTEND_REPO}:prod-latest"
+                sh "docker push ${BACKEND_REPO}:prod-${GIT_COMMIT}"
+                sh "docker push ${BACKEND_REPO}:prod-latest"
+                sh "docker push ${FRONTEND_REPO}:prod-${GIT_COMMIT}"
+                sh "docker push ${FRONTEND_REPO}:prod-latest"
+            }
+        }
+
+        stage('Deploy Prod to EC2') {
+            steps {
+                sshagent(['ec2-ssh-key']) {
+                    sh """
+                        ssh -o StrictHostKeyChecking=no ${EC2_HOST} '
+                            aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${REGISTRY} &&
+                            cd ~/relationsync &&
+                            docker compose -f docker-compose.ec2.prod.yml pull backend-prod frontend-prod &&
+                            docker compose -f docker-compose.ec2.prod.yml up -d backend-prod frontend-prod
+                        '
+                    """
+                }
+            }
+        }
+    }
+
+    post {
+        success { echo "Prod deployed: http://yourdomain.com" }
+        failure { echo "Prod pipeline failed or was rejected — no changes went live." }
+        aborted { echo "Approval timed out after 30 minutes — no changes went live." }
+    }
+}
