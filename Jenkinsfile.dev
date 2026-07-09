@@ -6,7 +6,7 @@ pipeline {
         BACKEND_REPO  = "${REGISTRY}/backend"
         FRONTEND_REPO = "${REGISTRY}/frontend"
         AWS_REGION    = "eu-north-1"
-        EC2_HOST      = "ubuntu@13.60.251.149"
+        EC2_HOST      = "ubuntu@16.170.162.204"
     }
 
     stages {
