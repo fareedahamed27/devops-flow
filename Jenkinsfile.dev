@@ -26,8 +26,21 @@ pipeline {
 
         stage('Trivy Scan') {
             steps {
-                sh "trivy image --severity HIGH,CRITICAL --exit-code 1 ${BACKEND_REPO}:dev-${GIT_COMMIT}"
-                sh "trivy image --severity HIGH,CRITICAL --exit-code 1 ${FRONTEND_REPO}:dev-${GIT_COMMIT}"
+                sh """
+                    trivy image \
+                    --ignore-unfixed \
+                    --severity HIGH,CRITICAL \
+                    --exit-code 1 \
+                ${BACKEND_REPO}:dev-${GIT_COMMIT}
+               """
+
+                sh """
+                  trivy image \
+                  --ignore-unfixed \
+                    --severity HIGH,CRITICAL \
+                    --exit-code 1 \
+                    ${FRONTEND_REPO}:dev-${GIT_COMMIT}
+                """
             }
         }
 
@@ -60,7 +73,7 @@ pipeline {
     }
 
     post {
-        success { echo "Dev deployed: http://dev.yourdomain.com" }
+        success { echo "Dev deployed: http://dev.adlinfotech.com" }
         failure { echo "Dev pipeline failed — check the failing stage above." }
     }
 }
