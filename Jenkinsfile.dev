@@ -17,12 +17,30 @@ pipeline {
             }
         }
 
-        stage('Build Dev Images') {
-            steps {
-                sh "docker build -f backend/Dockerfile.dev -t ${BACKEND_REPO}:dev-${GIT_COMMIT} ./backend"
-                sh "docker build -f frontend/Dockerfile.dev -t ${FRONTEND_REPO}:dev-${GIT_COMMIT} ./frontend"
-            }
-        }
+   stage('Build Dev Images') {
+    steps {
+        sh '''
+            echo "Cleaning old build cache..."
+            docker builder prune -af || true
+
+            echo "Removing old dev images..."
+            docker rmi -f ${BACKEND_REPO}:dev-${GIT_COMMIT} || true
+            docker rmi -f ${FRONTEND_REPO}:dev-${GIT_COMMIT} || true
+
+            echo "Building backend..."
+            docker build --pull --no-cache \
+                -f backend/Dockerfile.dev \
+                -t ${BACKEND_REPO}:dev-${GIT_COMMIT} \
+                ./backend
+
+            echo "Building frontend..."
+            docker build --pull --no-cache \
+                -f frontend/Dockerfile.dev \
+                -t ${FRONTEND_REPO}:dev-${GIT_COMMIT} \
+                ./frontend
+        '''
+    }
+}
 
         stage('Trivy Scan') {
             steps {
