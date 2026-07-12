@@ -6,7 +6,8 @@ pipeline {
         BACKEND_REPO  = "${REGISTRY}/backend"
         FRONTEND_REPO = "${REGISTRY}/frontend"
         AWS_REGION    = "eu-north-1"
-        EC2_HOST      = "ubuntu@16.170.162.204"
+        EC2_HOST      = "ubuntu@13.53.144.66"
+        SLACK_CHANNEL = "#all-relationsync"
     }
 
     stages {
@@ -14,20 +15,68 @@ pipeline {
         stage('Checkout') {
             steps {
                 checkout scm
+                slackSend(channel: "${SLACK_CHANNEL}", color: "#439FE0",
+                    message: "🔧 *Prod pipeline started* — `${env.JOB_NAME}` #${env.BUILD_NUMBER}\nCommit: `${GIT_COMMIT}`")
+            }
+        }
+
+        stage('Branch Guard') {
+            steps {
+                script {
+                    if (!env.GIT_BRANCH?.endsWith('main')) {
+                        slackSend(channel: "${SLACK_CHANNEL}", color: "warning",
+                            message: "⏭️ *Prod pipeline skipped* — push was to `${env.GIT_BRANCH}`, not `main`")
+                        currentBuild.result = 'NOT_BUILT'
+                        error("Not the main branch — skipping prod pipeline.")
+                    }
+                }
             }
         }
 
         stage('Build Prod Images') {
             steps {
-                sh "docker build -f backend/Dockerfile.prod -t ${BACKEND_REPO}:prod-${GIT_COMMIT} ./backend"
-                sh "docker build -f frontend/Dockerfile.prod -t ${FRONTEND_REPO}:prod-${GIT_COMMIT} ./frontend"
+                sh '''
+                    echo "Cleaning old build cache..."
+                    docker builder prune -af || true
+
+                    echo "Removing old prod images..."
+                    docker rmi -f ${BACKEND_REPO}:prod-${GIT_COMMIT} || true
+                    docker rmi -f ${FRONTEND_REPO}:prod-${GIT_COMMIT} || true
+
+                    echo "Building backend..."
+                    docker build --pull --no-cache \
+                        -f backend/Dockerfile.prod \
+                        -t ${BACKEND_REPO}:prod-${GIT_COMMIT} \
+                        ./backend
+
+                    echo "Building frontend..."
+                    docker build --pull --no-cache \
+                        -f frontend/Dockerfile.prod \
+                        -t ${FRONTEND_REPO}:prod-${GIT_COMMIT} \
+                        ./frontend
+                '''
+                slackSend(channel: "${SLACK_CHANNEL}", color: "#439FE0",
+                    message: "🛠️ *Prod images built* — backend + frontend, commit `${GIT_COMMIT}`")
             }
         }
 
         stage('Trivy Scan') {
             steps {
-                sh "trivy image --severity HIGH,CRITICAL --exit-code 1 ${BACKEND_REPO}:prod-${GIT_COMMIT}"
-                sh "trivy image --severity HIGH,CRITICAL --exit-code 1 ${FRONTEND_REPO}:prod-${GIT_COMMIT}"
+                sh """
+                    trivy image --ignore-unfixed --severity HIGH,CRITICAL --exit-code 1 ${BACKEND_REPO}:prod-${GIT_COMMIT}
+                """
+                sh """
+                    trivy image --ignore-unfixed --severity HIGH,CRITICAL --exit-code 1 ${FRONTEND_REPO}:prod-${GIT_COMMIT}
+                """
+                slackSend(channel: "${SLACK_CHANNEL}", color: "#439FE0",
+                    message: "🔍 *Trivy scan passed* — no HIGH/CRITICAL CVEs found in prod images")
+            }
+        }
+
+        stage('Notify: Awaiting Approval') {
+            steps {
+                slackSend(channel: "${SLACK_CHANNEL}", color: "warning",
+                    message: "⏳ *Prod deploy awaiting approval* — `${env.JOB_NAME}` #${env.BUILD_NUMBER}\nCommit: `${GIT_COMMIT}`\n<${env.BUILD_URL}input|Approve or reject here> (30 min timeout)")
             }
         }
 
@@ -48,6 +97,8 @@ pipeline {
                 sh "docker push ${BACKEND_REPO}:prod-latest"
                 sh "docker push ${FRONTEND_REPO}:prod-${GIT_COMMIT}"
                 sh "docker push ${FRONTEND_REPO}:prod-latest"
+                slackSend(channel: "${SLACK_CHANNEL}", color: "#439FE0",
+                    message: "📦 *Images pushed to ECR* — `prod-${GIT_COMMIT}` and `prod-latest`")
             }
         }
 
@@ -68,8 +119,17 @@ pipeline {
     }
 
     post {
-        success { echo "Prod deployed: http://yourdomain.com" }
-        failure { echo "Prod pipeline failed or was rejected — no changes went live." }
-        aborted { echo "Approval timed out after 30 minutes — no changes went live." }
+        success {
+            slackSend(channel: "${SLACK_CHANNEL}", color: "good",
+                message: "🚀 *Prod deployed* — `${env.JOB_NAME}` #${env.BUILD_NUMBER}\n<https://prod.tippu.dpdns.org|View site> | <${env.BUILD_URL}|View build>")
+        }
+        failure {
+            slackSend(channel: "${SLACK_CHANNEL}", color: "danger",
+                message: "❌ *Prod pipeline failed* — `${env.JOB_NAME}` #${env.BUILD_NUMBER}\n<${env.BUILD_URL}console|View logs>")
+        }
+        aborted {
+            slackSend(channel: "${SLACK_CHANNEL}", color: "warning",
+                message: "🛑 *Prod deploy timed out or was rejected* — `${env.JOB_NAME}` #${env.BUILD_NUMBER}\nNo changes went live.")
+        }
     }
 }

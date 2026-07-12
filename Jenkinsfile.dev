@@ -1,4 +1,4 @@
-pipeline {
+ pipeline {
     agent any
 
     environment {
@@ -6,7 +6,8 @@ pipeline {
         BACKEND_REPO  = "${REGISTRY}/backend"
         FRONTEND_REPO = "${REGISTRY}/frontend"
         AWS_REGION    = "eu-north-1"
-        EC2_HOST      = "ubuntu@16.170.162.204"
+        EC2_HOST      = "ubuntu@13.53.144.66"
+        SLACK_CHANNEL = "#all-relationsync"
     }
 
     stages {
@@ -14,51 +15,61 @@ pipeline {
         stage('Checkout') {
             steps {
                 checkout scm
+                slackSend(channel: "${SLACK_CHANNEL}", color: "#439FE0",
+                    message: "🔧 *Dev pipeline started* — `${env.JOB_NAME}` #${env.BUILD_NUMBER}\nCommit: `${GIT_COMMIT}`")
             }
         }
 
-   stage('Build Dev Images') {
-    steps {
-        sh '''
-            echo "Cleaning old build cache..."
-            docker builder prune -af || true
+        stage('Branch Guard') {
+            steps {
+                script {
+                    if (!env.GIT_BRANCH?.endsWith('develop')) {
+                        slackSend(channel: "${SLACK_CHANNEL}", color: "warning",
+                            message: "⏭️ *Dev pipeline skipped* — push was to `${env.GIT_BRANCH}`, not `develop`")
+                        currentBuild.result = 'NOT_BUILT'
+                        error("Not the develop branch — skipping dev pipeline.")
+                    }
+                }
+            }
+        }
 
-            echo "Removing old dev images..."
-            docker rmi -f ${BACKEND_REPO}:dev-${GIT_COMMIT} || true
-            docker rmi -f ${FRONTEND_REPO}:dev-${GIT_COMMIT} || true
+        stage('Build Dev Images') {
+            steps {
+                sh '''
+                    echo "Cleaning old build cache..."
+                    docker builder prune -af || true
 
-            echo "Building backend..."
-            docker build --pull --no-cache \
-                -f backend/Dockerfile.dev \
-                -t ${BACKEND_REPO}:dev-${GIT_COMMIT} \
-                ./backend
+                    echo "Removing old dev images..."
+                    docker rmi -f ${BACKEND_REPO}:dev-${GIT_COMMIT} || true
+                    docker rmi -f ${FRONTEND_REPO}:dev-${GIT_COMMIT} || true
 
-            echo "Building frontend..."
-            docker build --pull --no-cache \
-                -f frontend/Dockerfile.dev \
-                -t ${FRONTEND_REPO}:dev-${GIT_COMMIT} \
-                ./frontend
-        '''
-    }
-}
+                    echo "Building backend..."
+                    docker build --pull --no-cache \
+                        -f backend/Dockerfile.dev \
+                        -t ${BACKEND_REPO}:dev-${GIT_COMMIT} \
+                        ./backend
+
+                    echo "Building frontend..."
+                    docker build --pull --no-cache \
+                        -f frontend/Dockerfile.dev \
+                        -t ${FRONTEND_REPO}:dev-${GIT_COMMIT} \
+                        ./frontend
+                '''
+                slackSend(channel: "${SLACK_CHANNEL}", color: "#439FE0",
+                    message: "🛠️ *Dev images built* — backend + frontend, commit `${GIT_COMMIT}`")
+            }
+        }
 
         stage('Trivy Scan') {
             steps {
                 sh """
-                    trivy image \
-                    --ignore-unfixed \
-                    --severity HIGH,CRITICAL \
-                    --exit-code 0 \
-                ${BACKEND_REPO}:dev-${GIT_COMMIT}
-               """
-
-                sh """
-                  trivy image \
-                  --ignore-unfixed \
-                    --severity HIGH,CRITICAL \
-                    --exit-code 0 \
-                    ${FRONTEND_REPO}:dev-${GIT_COMMIT}
+                    trivy image --ignore-unfixed --severity HIGH,CRITICAL --exit-code 0 ${BACKEND_REPO}:dev-${GIT_COMMIT}
                 """
+                sh """
+                    trivy image --ignore-unfixed --severity HIGH,CRITICAL --exit-code 0 ${FRONTEND_REPO}:dev-${GIT_COMMIT}
+                """
+                slackSend(channel: "${SLACK_CHANNEL}", color: "#439FE0",
+                    message: "🔍 *Trivy scan complete* — dev images scanned (non-blocking), check console for findings")
             }
         }
 
@@ -71,6 +82,8 @@ pipeline {
                 sh "docker push ${BACKEND_REPO}:dev-latest"
                 sh "docker push ${FRONTEND_REPO}:dev-${GIT_COMMIT}"
                 sh "docker push ${FRONTEND_REPO}:dev-latest"
+                slackSend(channel: "${SLACK_CHANNEL}", color: "#439FE0",
+                    message: "📦 *Images pushed to ECR* — `dev-${GIT_COMMIT}` and `dev-latest`")
             }
         }
 
@@ -91,7 +104,13 @@ pipeline {
     }
 
     post {
-        success { echo "Dev deployed: http://dev.adlinfotech.com" }
-        failure { echo "Dev pipeline failed — check the failing stage above." }
+        success {
+            slackSend(channel: "${SLACK_CHANNEL}", color: "good",
+                message: "✅ *Dev deployed* — `${env.JOB_NAME}` #${env.BUILD_NUMBER}\n<http://dev.tippu.dpdns.org|View site> | <${env.BUILD_URL}|View build>")
+        }
+        failure {
+            slackSend(channel: "${SLACK_CHANNEL}", color: "danger",
+                message: "❌ *Dev pipeline failed* — `${env.JOB_NAME}` #${env.BUILD_NUMBER}\n<${env.BUILD_URL}console|View logs>")
+        }
     }
 }
