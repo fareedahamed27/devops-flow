@@ -75,13 +75,6 @@ pipeline {
 
         
 
-        stage('Approve Production Deploy') {
-            steps {
-                timeout(time: 30, unit: 'MINUTES') {
-                    input message: "Deploy commit ${GIT_COMMIT} to PRODUCTION?", ok: 'Approve'
-                }
-            }
-        }
 
         stage('Push to ECR') {
             steps {
