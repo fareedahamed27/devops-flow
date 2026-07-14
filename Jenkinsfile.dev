@@ -27,7 +27,7 @@
                         slackSend(channel: "${SLACK_CHANNEL}", color: "warning",
                             message: "⏭️ *Dev pipeline skipped* — push was to `${env.GIT_BRANCH}`, not `develop`")
                         currentBuild.result = 'NOT_BUILT'
-                        error("Not the develop branch — skipping dev pipeline.")
+                        error("Not the develop branch —  skipping dev pipeline. update the branch")
                     }
                 }
             }
