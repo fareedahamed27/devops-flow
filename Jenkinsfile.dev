@@ -6,7 +6,7 @@
         BACKEND_REPO  = "${REGISTRY}/backend"
         FRONTEND_REPO = "${REGISTRY}/frontend"
         AWS_REGION    = "eu-north-1"
-        EC2_HOST      = "ubuntu@13.53.144.66"
+        EC2_HOST      = "ubuntu@dev.tippu.dpdns.org"
         SLACK_CHANNEL = "#all-relationsync"
     }
 

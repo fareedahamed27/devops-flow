@@ -6,7 +6,7 @@ pipeline {
         BACKEND_REPO  = "${REGISTRY}/backend"
         FRONTEND_REPO = "${REGISTRY}/frontend"
         AWS_REGION    = "eu-north-1"
-        EC2_HOST      = "ubuntu@56.228.82.220"
+        EC2_HOST      = "ubuntu@dev.tippu.dpdns.org"
         SLACK_CHANNEL = "#all-relationsync"
     }
 
