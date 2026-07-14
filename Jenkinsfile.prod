@@ -6,7 +6,7 @@ pipeline {
         BACKEND_REPO  = "${REGISTRY}/backend"
         FRONTEND_REPO = "${REGISTRY}/frontend"
         AWS_REGION    = "eu-north-1"
-        EC2_HOST      = "ubuntu@13.53.144.66"
+        EC2_HOST      = "ubuntu@dev.tippu.dpdns.org"
         SLACK_CHANNEL = "#all-relationsync"
     }
 
@@ -73,20 +73,8 @@ pipeline {
             }
         }
 
-        stage('Notify: Awaiting Approval') {
-            steps {
-                slackSend(channel: "${SLACK_CHANNEL}", color: "warning",
-                    message: "⏳ *Prod deploy awaiting approval* — `${env.JOB_NAME}` #${env.BUILD_NUMBER}\nCommit: `${GIT_COMMIT}`\n<${env.BUILD_URL}input|Approve or reject here> (30 min timeout)")
-            }
-        }
+        
 
-        stage('Approve Production Deploy') {
-            steps {
-                timeout(time: 30, unit: 'MINUTES') {
-                    input message: "Deploy commit ${GIT_COMMIT} to PRODUCTION?", ok: 'Approve'
-                }
-            }
-        }
 
         stage('Push to ECR') {
             steps {
@@ -127,9 +115,6 @@ pipeline {
             slackSend(channel: "${SLACK_CHANNEL}", color: "danger",
                 message: "❌ *Prod pipeline failed* — `${env.JOB_NAME}` #${env.BUILD_NUMBER}\n<${env.BUILD_URL}console|View logs>")
         }
-        aborted {
-            slackSend(channel: "${SLACK_CHANNEL}", color: "warning",
-                message: "🛑 *Prod deploy timed out or was rejected* — `${env.JOB_NAME}` #${env.BUILD_NUMBER}\nNo changes went live.")
-        }
+        
     }
 }
